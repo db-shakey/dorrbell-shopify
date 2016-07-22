@@ -12,31 +12,31 @@
     <link itemprop="availability" href="http://schema.org/InStock" />
     {% else %}
     <link itemprop="availability" href="http://schema.org/OutOfStock" />
-    {% endif %}  
+    {% endif %}
   </div>
   {% endfor %}
 
   {% comment %}
   <div class="inline-row">
-    
+
     {% if collection %}
     <div class="next-prev inline-item left links-row desktop db-mobile-nodisplay">
       <a class="back-link" href="{{ collection.url }}" title="{{ collection.title | escape }}"><span>{{ 'products.product.back_to_html' | t }}</span> <span>{{ collection.title }}</span></a>
     </div>
-    
+
     <div class="inline-item right last desktop">
       {% if collection.previous_product %}
       <a href="{{ collection.previous_product }}">{{ 'products.product.previous' | t }}</a>
       {% if collection.next_product %} <span class="divider">/</span> {% endif %}
       {% endif %}
-      
+
       {% if collection.next_product %}
       <a href="{{ collection.next_product }}">{{ 'products.product.next' | t }}</a>
       {% endif %}
     </div>
     {% endif %}
-      
-    
+
+
     <!-- Begin breadcrumbs -->
     <div class="breadcrumbs inline-item left">
       <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="url"><span itemprop="title">{{ 'general.breadcrumbs.home' | t }}</span></a></span>
@@ -52,7 +52,7 @@
     <!-- End breadcrumbs -->
   </div>
   {% endcomment %}
-  
+
   {% comment %}
   <!-- template -->
   {% if settings.product_notification_show %}
@@ -60,16 +60,16 @@
   {% endif %}
   <!-- end template -->
   {% endcomment %}
-  
-  
-  {% if settings.product_notification_show %}
-  <div class="db-prod-notification">Try this item on at home before buying it.&nbsp;&nbsp;You pay only if you decide to keep it.&nbsp;&nbsp;<a href="" style="color:#ee9a25;">Details</a></div>
-  {% endif %}
-  
 
-  
+
+  {% if settings.product_notification_show %}
+  <div class="db-prod-notification">Try this item on at home before buying it.&nbsp;&nbsp;You pay only if you decide to keep it.&nbsp;&nbsp;<a href="">Details</a></div>
+  {% endif %}
+
+
+
   <div class="row space-under">
-    
+
     <!-- begin gallery -->
     <div class="product-gallery db-prod-col db-left-col">
       <div class="main">
@@ -77,7 +77,7 @@
           <img class="main-img" src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" />
         </a>
       </div>
-      
+
       {% if product.images.size > 1 %}
       <div class="thumbnails">
         {% for image in product.images %}
@@ -89,7 +89,7 @@
       {% endif %}
     </div>
     <!-- end gallery -->
-    
+
     <!-- begin product form and details -->
     <div class="db-prod-col db-right-col">
       <div class="border-bottom section padless-top cf product-title-row">
@@ -110,10 +110,10 @@
           {% endif %}
           <span class="brand" itemprop="brand">{% if product.vendor == "Dorrbell" %}Fulfilled by{% else %}Sold locally by{% endif %} {{ product.vendor | link_to: vendor_url }} {% if product.metafields.product.cluster %}({{ product.metafields.product.cluster }}){% endif %}</span>
           {% endif %}
-          
+
           {% if settings.prod_show_type and product.type != blank %}
           {% if settings.prod_show_brand %}{% endif %}
-          
+
           {% assign product_type_handle = product.type | handle %}
           {% if collections[product_type_handle].handle == product_type_handle %}
           {% assign type_url = collections[product_type_handle].url %}
@@ -133,17 +133,17 @@
           {{ variant.metafields.price.metaprice|money}}
         </div>
         </section>
-        
-        <section id="product-notes">	
+
+        <section id="product-notes">
           <p class="db-prod-notes">The price shown here <span style="font-weight:600;text-decoration:underline;">will not be</span> charged during checkout.</p>
-         
+
         </section>
-        
+
         {%comment%}{% include 'sharing' with product %}{%endcomment%}
       </div>
-      
+
       <div class="section {% unless settings.prod_desc_loc == 'under' %}border-bottom{% endunless %}">
-        
+
 
         {% if product.available %}
         <form class="product-form" id="product-form" action="/cart/add" method="post" enctype="multipart/form-data" data-product-id="{{ product.id }}">
@@ -167,16 +167,16 @@
           </div>
           {% endif %}
           {% endunless %}
-                    
+
           <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
             <select id="product-select" name="id" class="hidden">
               {% for variant in product.variants %}
               <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}mm</option>
               {% endfor %}
             </select>
-            
+
           </div>
-          
+
 
           {% if settings.prod_show_quantity_input %}
           <div class="quantity">
@@ -205,11 +205,11 @@
         {% endif %}
 
       </div>
-      
+
       {% unless settings.prod_desc_loc == 'under' %}
       <div class="product-description rte" itemprop="description">
         <p>{{ product.description }}</p>
-       
+
         <p>View more items from {{ product.vendor | link_to: vendor_url }}</p>
       </div>
       {% if settings.prod_show_sku and product.variants.first.sku != blank %}
@@ -217,20 +217,20 @@
   		{% endif %}
       <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
       {% endunless %}
-      
+
     </div>
     <!-- end product form and details -->
   </div>
   {% if settings.prod_desc_loc == 'under' %}
-  
+
   <div class="product-description rte spaced-row reading-column" itemprop="description">{{ product.description }}</div>
   {% if settings.prod_show_sku and product.variants.first.sku != blank %}
      <div class="space-under sku-row">{{ 'products.product.sku' | t }} <span id="sku">{{ product.variants.first.sku }}</span></div>
   {% endif %}
   <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
   {% endif %}
-  
-  
+
+
   {% if collection %}
   <div class="links-row mobile section border-top db-mobile-nodisplay">
     <a class="back-link" href="{{ collection.url }}" title="{{ collection.title | escape }}"><i class="icon-arrow3-left slim"></i> <span>{{ collection.title }}</span></a>
