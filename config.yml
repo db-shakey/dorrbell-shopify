@@ -1,0 +1,5 @@
+development:
+  password: bc17fc65cce4a03ad436b2a8849d1cb8
+  store: dorrbell-test.myshopify.com
+  bucket_size: 40
+  refill_rate: 2

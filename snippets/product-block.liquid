@@ -1,0 +1,265 @@
+{% capture url %}{% if collection %}{{ product.url | within: collection }}{% else %}{{ product.url }}{% endif %}{% endcapture %}
+{% assign mod6 = forloop.index | modulo: 6 %}
+{% assign mod4 = forloop.index | modulo: 4 %}
+{% assign mod3 = forloop.index | modulo: 3 %}
+{% assign mod2 = forloop.index | modulo: 2 %}
+
+{% capture max_cols %}{% if template contains 'index' %}{{ settings.homepage_products_per_row }}{% else %}{{ settings.products_per_row }}{% endif %}{% endcapture %}
+
+<div class="product-block {% if settings.label_soldout_show and product.available == false %}sold-out {% endif %}{{ product-block | default: 'flex column' }} max-cols-{{ max_cols }} min-cols-{{ settings.mobile_products_per_row }} {% if mod2 == 1 %} nth-2{% endif %}{% if mod3 == 1 %} nth-3{% endif %}{% if mod4 == 1 %} nth-4{% endif %}{% if mod6 == 1 %} nth-6{% endif %}">
+  <div class="image">
+    <div class="inner">
+      {{ product.featured_image | product_img_url: 'grande' | img_tag: product.featured_image.alt | link_to: url }}
+      
+      {% if settings.prod_quick_buy_show %}
+      <div class="quick-buy-wrap pos-{{ settings.prod_quick_buy_pos }}"><a class="quick-buy {% if settings.prod_quick_buy_pos == 'middle' %}giant{% else %}big{% endif %}-round-button" href="#">{{ 'products.general.quick_buy_html' | t }}</a></div>
+      {% endif %}
+    </div>
+    
+    {% include 'product-label' %}
+  </div>
+  
+  
+  <div class="{% if settings.prod_block_layout contains 'beside' %}ft ftw{% endif %}{% if settings.prod_block_layout == 'beside-exceptmobile' %} ft-nm{% endif %}">
+    <div class="ftr">
+      {%if collection.metafields.collection.isvendor == 'TRUE' %}
+      	<span class="db-prod-block-brand">{{product.metafields.product.brand}}</span><br/>
+      	<span class="db-prod-block-title"><a class="db-prod-block-title" href="{{ url }}">{{ product.title }}</a></span>
+      {%else%}
+		<span class="db-prod-block-brand">{{product.metafields.product.brand}}</span><br/>
+      	<span class="db-prod-block-text"><a class="db-prod-block-title" href="{{ url }}">{{ product.title }}</a></span><br/>
+      	<span class="db-prod-block-text">Store: {{product.vendor}}
+      {%endif%}
+      
+      <!-- Sergey - update to show minimum variant.metafields.meatprice -->
+      <div class="db-prod-block-price ftc {% if product.compare_at_price_max > product.price %}on-sale{% endif %}">
+	{% comment %}
+        <div class="db-prod-block-price ftc {% if variant.metafields.price.metalistprice > variant.metafields.price.metaprice %}on-sale{% endif %}">
+   	{% endcomment %}
+        
+{% assign metaprices = "" %}
+{% for variant in product.variants %}
+  	{% if variant.metafields.price.metaprice %}
+      	{% assign metaprices = metaprices | append: variant.metafields.price.metaprice | append: "," %}
+    {% elsif product.metafields.price.metaprice %}
+        {% assign metaprices = metaprices | append: product.metafields.price.metaprice | append: "," %}
+    {% endif %}
+{% endfor %}
+{% assign metaprices_array = metaprices | split: ',' %}
+
+{% assign j = 0 %}
+{% assign min_price = metaprices_array[0] | plus: 0 %}
+{% assign max_price = metaprices_array[0] | plus: 0 %}
+{% for metaprice1 in metaprices_array %}
+      {% assign j = j | plus: 1 %}
+      {% assign next_price = metaprices_array[j] | plus: 0 %}
+      {% if next_price != 0 and min_price > next_price %}
+      		{% assign min_price = next_price %}
+      {% endif %} 
+      {% if next_price != 0 and max_price < next_price %}
+      		{% assign max_price = next_price %}
+      {% endif %} 
+{% endfor %}      
+
+      {% if min_price != max_price %}
+        <span class="from">{{ 'products.general.from' | t }}</span>
+      {% endif %}
+        <span class="amount">{{min_price|money}}</span>
+        {% if product.metafields.price.metalistprice > product.metafields.price.metaprice %}
+        <span class="amount db-on-sale"><del>{{product.metafields.price.metalistprice|money}}</del></span>
+        {% endif %}    
+      
+      {%comment%}
+      {% if product.price_varies %}
+        <span class="from">{{ 'products.general.from' | t }}</span>
+      {% endif %}
+        <span class="amount">{{product.metafields.price.metaprice|money}}</span>
+        {% if product.metafields.price.metalistprice > product.metafields.price.metaprice %}
+        <span class="amount db-on-sale"><del>{{product.metafields.price.metalistprice|money}}</del></span>
+        {% endif %}
+      {%endcomment%}  
+      
+      </div>
+     
+    </div>
+  </div>
+  
+  
+  <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+  
+  <script id="product-block-json-{{ product.id }}" type="text/template">products.id{{ product.id }} = {{ product | json }};</script>
+  {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+  {% if settings.prod_quick_buy_show %}
+  <!--script id="product-block-template-{{ product.id }}" type="text/template"-->
+  
+  <!-- Quick Shop Start -->
+  
+  <template id="product-block-template-{{ product.id }}">
+  <div class="quickbuy-form">
+    <div class="row">
+    <div class="product-gallery half column">
+      <div class="main">
+        <div class="main-img-link" href="{{ featured_image | img_url: 'master' }}" title="{{ featured_image.alt | escape }}">
+          <img class="main-img" src="{{ featured_image | img_url: 'grande' }}" alt="{{ featured_image.alt | escape }}" />
+        </div>
+      </div>
+      
+      {% if product.images.size > 1 %}
+      <div class="thumbnails">
+        {% for image in product.images %}
+        <a class="thumbnail" title="{{ image.alt | escape }}" href="{{ image | product_img_url: 'master' }}" data-src="{{ image | product_img_url: 'grande' }}">
+          {{ image | img_url: 'small' | img_tag: image.alt }}
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="half column product-details">
+      <div class="border-bottom section padless-top cf product-title-row">
+      
+        <h1 class="product-title">{{ product.metafields.product.brand }} {{ product.title }}</h1>
+        {% if settings.prod_show_brand or settings.prod_show_type %}
+        <div class="brand-and-type feature-col">
+          {% if settings.prod_show_brand %}
+          {% comment %}
+          Do we have a collection that has the same name as our product vendor name?
+          If we do, let's have the vendor link point to it.
+          If not, we will point to the automatic vendor collection.
+          {% endcomment %}
+          {% assign product_vendor_handle = product.vendor | handle %}
+          {% if collections[product_vendor_handle].handle == product_vendor_handle %}
+          {% assign vendor_url = collections[product_vendor_handle].url %}
+          {% else %}
+          {% assign vendor_url = product.vendor | url_for_vendor %}
+          {% endif %}
+          <span class="brand" itemprop="brand">{% if product.vendor == "Dorrbell" %}Fulfilled by{%else%}Sold locally by{% endif %} {{ product.vendor | link_to: vendor_url }}{%if product.metafields.product.cluster %} ({{ product.metafields.product.cluster }}) {%endif%}</span>
+          {%if product.metafields.product.brand%}{%endif%}
+          {% endif %}
+          
+          {% if settings.prod_show_type and product.type != blank %}
+          {% if settings.prod_show_brand %}/{% endif %}
+          
+          {% assign product_type_handle = product.type | handle %}
+          {% if collections[product_type_handle].handle == product_type_handle %}
+          {% assign type_url = collections[product_type_handle].url %}
+          {% else %}
+          {% assign type_url = product.type | url_for_type %}
+          {% endif %}
+          <span class="type">{{ product.type | link_to: type_url }}</span>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        <div id="price" class="product-price {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}on-sale{% endif %}">
+          {% if product.variants.size == 1 and product.compare_at_price_max > product.price %}
+          <del>{{ product.compare_at_price | money }}</del>
+          {% endif %}
+          {{ product.price | money }}
+        </div>
+        
+        <section id="product-notes">	
+          <p class="db-prod-notes">Try this item on at home before buying it.  You pay the price shown here only if you decide to keep it. You will not be charged during checkout.</p>
+        </section>
+        
+        {%comment%}{% include 'sharing' with product %}{%endcomment%}
+      </div>
+      
+      <div class="section border-bottom">
+        {% if settings.prod_show_sku and product.variants.first.sku != blank %}
+        <div class="space-under sku-row">{{ 'products.product.sku' | t }} <span id="sku">{{ product.variants.first.sku }}</span></div>
+        {% endif %}
+
+        {% if product.available %}
+        <form class="product-form" id="product-form" action="/cart/add" method="post" enctype="multipart/form-data" data-product-id="{{ product.id }}">
+          {% assign hide_default_title = false %}
+          {% if product.variants.size == 1 %}
+            {% if product.variants.first.title contains 'Default' %}
+              {% assign hide_default_title = true %}
+            {% endif %}
+          {% unless settings.prod_singlevar_mode contains 'drop' %}
+            {% assign hide_default_title = true %}
+          {% endunless %}
+          {% endif %}
+
+                {% unless product.variants.size != 1 or product.variants.first.title contains 'Default' %}
+                {% if settings.prod_singlevar_mode contains 'text' %}
+                <div class="variant-info">
+                  {% for option in product.options %}
+                  {% assign option_key = 'option' | append: forloop.index %}
+                  <span class="option">{% if settings.prod_singlevar_mode contains 'withlabel' %}<span class="label">{{ option }}:</span>{% endif %} {{ product.variants.first[option_key] }}</span>{% unless forloop.last %},{% endunless %}
+                  {% endfor %}
+                </div>
+                {% endif %}
+                {% endunless %}
+
+                {% if product.variants.size > 1 %}
+                <div id="product-variants" class="qqll {% if hide_default_title %} hidden{% endif %}">
+                  <select id="product-select" name="id" class="hidden">
+                    {% for variant in product.variants %}
+                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                    {% endfor %}
+                  </select>
+                  
+                </div>
+                {% else %}
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+                {% endif %}
+
+                {% if settings.prod_show_quantity_input %}
+                <div class="quantity">
+                  <label for="quantity">{{ 'products.product.quantity' | t }}</label>
+                  <input class="select-on-focus" type="text" size="3" id="quantity" name="quantity" value="1" />
+                </div>
+                {% else %}
+                <input type="hidden" name="quantity" value="1" />
+                {% endif %}
+
+                <button name="add" id="add" class="btn">{{ 'products.product.add_to_cart_html' | t }}</button>
+
+          <div id="backorder" class="hidden">
+            <p><span id="selected-variant"></span> {{ 'products.product.backorder' | t }}</p>
+          </div>
+        </form>
+        {% else %}
+        <div class="rte">
+          {{ 'products.product.product_unavailable_html' | t }}
+        </div>
+        {% endif %}
+      </div>
+      
+      <div>
+        <a class="more-link" href="{{ url }}">{{ 'products.general.full_details' | t }}</a>
+      </div>
+    </div>
+    </div>
+  </div>
+
+<script>
+  var metalistprice = [];
+  var metaprice = [];
+{% for variant in product.variants %}
+  	{% if variant.metafields.price.metaprice %}
+	  	{% if variant.metafields.price.metalistprice %}
+	    	metalistprice[{{ variant.id }}] = {{ variant.metafields.price.metalistprice }};
+        {% else %}
+	    	metalistprice[{{ variant.id }}] = 0;
+        {% endif%}
+    	metaprice[{{ variant.id }}] = {{ variant.metafields.price.metaprice }};
+    {% elsif product.metafields.price.metaprice %}
+	  	{% if product.metafields.price.metalistprice %}
+	    	metalistprice[{{ variant.id }}] = {{ product.metafields.price.metalistprice }};
+        {% else %}
+	    	metalistprice[{{ variant.id }}] = 0;
+        {% endif%}
+    	metaprice[{{ variant.id }}] = {{ product.metafields.price.metaprice }};
+    {% else %}
+    	metalistprice[{{ variant.id }}] = 0;
+    	metaprice[{{ variant.id }}] = 0;
+    {% endif %}
+{% endfor %}
+</script>
+
+  </template>
+  
+  {% endif %}
+</div>

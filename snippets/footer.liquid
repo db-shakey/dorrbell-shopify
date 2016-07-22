@@ -1,0 +1,11 @@
+
+<div id="page-footer" class="page-footer" style="height: 50px;">
+  <div class="footer-lt">
+    {% for link in linklists.footer.links %}
+    <a class="hash-link" style="padding-left: 20px;" href="{{link.url}}">{{link.title}}</a>
+    {% endfor %}
+  </div>
+  <div class="container footer-rt">
+    <a class="hash-link" href="#toolbar">{{ 'layout.footer.back_to_top' | t }} <i class="icon-arrow3-up"></i></a> 
+  </div>
+</div>

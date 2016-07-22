@@ -1,0 +1,27 @@
+
+
+<script>
+ $(document).ready(function(){
+   
+   
+   (function(){
+     
+     var referralButton = {
+      
+       init : function(user){
+         if(user){
+         	firebase.database().ref('customers/' + user.uid).on('value', function(snapshot){
+              	if(snapshot.val().contact.Referral_Credit__c)
+               		$(".modal-trigger#referral-link").html('$' + snapshot.val().contact.Referral_Credit__c + ' credit');
+             });  
+         }
+       },
+     }
+     
+     $(document).ready(function(){
+     	firebase.auth().onAuthStateChanged(referralButton.init);  
+     });
+   })();
+ }); 
+</script>
+ 

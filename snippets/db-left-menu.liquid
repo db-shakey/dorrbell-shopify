@@ -1,0 +1,1671 @@
+{%comment%}
+collection: {{handle}}<br/>
+tags: {{current_tags}}<br/><br/>
+{%endcomment%}
+
+
+<!-- Womens Dresses -->
+{% if handle == "women-clothing" and current_tags contains "Dresses" or current_tags contains "dresses"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-dresses-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-dresses-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.womens-dresses-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Womens Tops -->
+{% elsif handle == "women-clothing" and current_tags contains "Tops" or current_tags contains "tops"%}
+
+	<div class="db-left-menu-sec">
+      {% for link in linklists.womens-tops-top.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-tops-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Sleeve Length</div>
+      {% for link in linklists.womens-tops-sleevelength.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Womens Pants -->
+{% elsif handle == "women-clothing" and current_tags contains "Pants" or current_tags contains "pants"%}
+
+	<div class="db-left-menu-sec">
+      {% for link in linklists.womens-pants-top.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-pants-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.womens-pants-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Womens Shorts -->
+{% elsif handle == "women-clothing" and current_tags contains "Shorts" or current_tags contains "shorts"%}
+
+	<div class="db-left-menu-sec">
+      {% for link in linklists.women-clothing-shorts-top.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.women-clothing-shorts-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Length</div>
+      {% for link in linklists.women-clothing-shorts-length.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Womens Sweaters -->
+{% elsif handle == "women-clothing" and current_tags contains "Sweaters" or current_tags contains "sweaters"%}
+
+	<div class="db-left-menu-sec">Womens Sweater<br/><br/>
+		{% for link in linklists.womens-sweaters-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-sweaters-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Sleeve Length</div>
+      {% for link in linklists.womens-sweaters-sleevelength.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Womens Outerwear -->
+{% elsif handle == "women-clothing" and current_tags contains "Outerwear" or current_tags contains "outerwear"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.women-outerwear-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.women-outerwear-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.women-outerwear-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+
+<!-- Women's Jeans -->
+{% elsif handle == "women-clothing" and current_tags contains "Jeans" or current_tags contains "jeans"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-jeans-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-jeans-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Fit & Wash</div>
+      {% for link in linklists.womens-jeans-fitandwash.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Sweatshirts & Pullovers -->
+{% elsif handle == "women-clothing" and current_tags contains "sweatshirts-pullovers" or current_tags contains "Sweatshirts & Pullovers"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-clothing-sweatshirts-pullovers-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-clothing-sweatshirts-pullovers-style.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Collections</div>
+      {% for link in linklists.womens-clothing-sweatshirts-pullovers-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Skirts -->
+{% elsif handle == "women-clothing" and current_tags contains "Skirts" or current_tags contains "skirts"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-skirts-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-skirts-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Length</div>
+      {% for link in linklists.womens-skirts-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Swimwear -->
+{% elsif handle == "women-clothing" and current_tags contains "Swimwear" or current_tags contains "swimwear"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-swimwear-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-swimwear-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Fit</div>
+      {% for link in linklists.womens-swimwear-fit.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Activewear -->
+{% elsif handle == "women-clothing" and current_tags contains "Activewear" or current_tags contains "activewear"%}
+
+	<div class="db-left-menu-sec">Womens Activewear<br/><br/>
+		{% for link in linklists.womens-activewear-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-activewear-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Activities</div>
+      {% for link in linklists.womens-activewear-activities.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+{% elsif handle == "women-clothing" and current_tags contains "Bras & Panties" or current_tags contains "bras-panties"%}
+
+	<div class="db-left-menu-sec">Womens Bras & Panties <br/><br/>
+		{% for link in linklists.women-clothing-bras-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.women-clothing-bras-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Intimates -->
+{% elsif handle == "women-clothing" and current_tags contains "intimates" or current_tags contains "Intimates"%}
+
+	<div class="db-left-menu-sec">Womens Intimates<br/><br/>
+		{% for link in linklists.womens-intimates-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-intimates-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.womens-intimates-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Clothing -->
+{% elsif handle == "women-clothing"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.women-clothing-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Collections</div>
+      {% for link in linklists.women-clothing-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Shoes -->
+
+<!-- Women's Shoes - Sandals-->
+{% elsif handle == "women-shoes" and current_tags contains "sandals" or current_tags contains "Sandals"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-sandals-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-sandals-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Heel Type</div>
+      {% for link in linklists.womens-sandals-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Shoes - Heels-->
+{% elsif handle == "women-shoes" and current_tags contains "heels" or current_tags contains "Heels"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-heels-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-heels-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Heel Height</div>
+      {% for link in linklists.womens-heels-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Shoes - Flats-->
+{% elsif handle == "women-shoes" and current_tags contains "flats" or current_tags contains "Flats"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-flats-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-flats-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.womens-flats-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Shoes - Athletic-->
+{% elsif handle == "women-shoes" and current_tags contains "athletic" or current_tags contains "Athletic"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-athletic-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-athletic-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.women-shoes-athletic-occasion.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Shoes - Boots-->
+{% elsif handle == "women-shoes" and current_tags contains "boots" or current_tags contains "Boots"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-boots-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-boots-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.womens-boots-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Shoes - Pumps-->
+{% elsif handle == "women-shoes" and current_tags contains "pumps" or current_tags contains "Pumps"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-pumps-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-pumps-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Heel Height</div>
+      {% for link in linklists.womens-pumps-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Shoes - Wedges-->
+{% elsif handle == "women-shoes" and current_tags contains "wedges" or current_tags contains "Wedges"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-wedges-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-wedges-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.womens-wedges-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women's Shoes must be located beneath other logic statements for womens shoes-->
+{% elsif handle == "women-shoes"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.women-shoes-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.women-shoes-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.women-shoes-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Handbags -->
+
+<!-- Women Handbags Bucket Bags-->
+{% elsif handle == "women-handbags" and current_tags contains "Bucket Bags" or current_tags contains "bucket-bags"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-bucket-bags-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Collections</div>
+      {% for link in linklists.women-handbags-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Handbags Clutches-->
+{% elsif handle == "women-handbags" and current_tags contains "Clutches" or current_tags contains "clutches"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-clutches-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Collections</div>
+      {% for link in linklists.women-handbags-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Handbags Crossbody-->
+{% elsif handle == "women-handbags" and current_tags contains "Crossbody" or current_tags contains "crossbody"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.women-handbags-cross-body-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Collections</div>
+      {% for link in linklists.women-handbags-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Handbags Beach Bags-->
+{% elsif handle == "women-handbags" and current_tags contains "Beach Bags" or current_tags contains "beach-bags"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.women-handbags-cross-body-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Collections</div>
+      {% for link in linklists.women-handbags-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Handbags -->
+{% elsif handle == "women-handbags" %}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.women-handbags-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Collections</div>
+      {% for link in linklists.women-handbags-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Accessories -->
+
+<!-- Women Accessories Handbags & Wallets-->
+
+{% elsif handle == "women-accessories" and current_tags contains "Handbags & Wallets" or current_tags contains "handbags-wallets"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.women-accessories-handbags-wallets-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.women-accessories-handbags-wallets-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.women-accessories-handbags-wallets-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Accessories Sunglasses-->
+{% elsif handle == "women-accessories" and current_tags contains "sunglasses" or current_tags contains "Sunglasses"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-sunglasses-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-sunglasses-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Face Shape</div>
+      {% for link in linklists.womens-sunglasses-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Accessories Scarves & Wraps -->
+{% elsif handle == "women-accessories" and current_tags contains "scarves-wraps" or current_tags contains "Scarves & Wraps"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.womens-scarves-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-scarves-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Material</div>
+      {% for link in linklists.womens-scarves-material.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!--Women Accessories Hats-->
+{% elsif handle == "women-accessories" and current_tags contains "hats" or current_tags contains "Hats"%}
+
+	<div class="db-left-menu-sec">Women Accessories Hats
+		{% for link in linklists.womens-hats-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-hats-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.womens-hats-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!--Women Accessories Belts-->
+{% elsif handle == "women-accessories" and current_tags contains "belts" or current_tags contains "Belts"%}
+
+	<div class="db-left-menu-sec">Women Accessories Belts
+		{% for link in linklists.womens-belts-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.womens-belts-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Belt Width</div>
+      {% for link in linklists.womens-belts-belt-width.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Women Accessories Top-Level -->
+{% elsif handle == "women-accessories"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.women-accessories-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Collections</div>
+		{% for link in linklists.women-accessories-collections.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+
+<!-- Men's Dress Shirts -->
+{% elsif handle == "men-clothing" and current_tags contains "Dress Shirts" or current_tags contains "dress-shirts"%}
+
+	<div class="db-left-menu-sec">Men Dress Shirts
+		{% for link in linklists.mens-dress-shirts-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-dress-shirts-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-dress-shirts-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Casual Shirts -->
+{% elsif handle == "men-clothing" and current_tags contains "casual-shirts" or current_tags contains "Casual Shirts"%}
+
+	<div class="db-left-menu-sec">Men Casual Shirts
+		{% for link in linklists.mens-casual-shirts-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-casual-shirts-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Fit</div>
+      {% for link in linklists.mens-casual-shirts-fit.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Polos -->
+{% elsif handle == "men-clothing" and current_tags contains "polos" or current_tags contains "Polos"%}
+
+	<div class="db-left-menu-sec">Men Polos
+		{% for link in linklists.mens-polos-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-polos-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-polos-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's T-Shirts -->
+{% elsif handle == "men-clothing" and current_tags contains "t-shirts" or current_tags contains "T-Shirts"%}
+
+	<div class="db-left-menu-sec">Men T-Shirts
+		{% for link in linklists.mens-t-shirts-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-t-shirts-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Fit</div>
+      {% for link in linklists.mens-t-shirts-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Coats & Jackets -->
+{% elsif handle == "men-clothing" and current_tags contains "coats-jackets" or current_tags contains "Coats & Jackets"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-coats-jackets-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-coats-jackets-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-coats-jackets-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Sweaters -->
+{% elsif handle == "men-clothing" and current_tags contains "sweaters" or current_tags contains "Sweaters"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-sweaters-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-sweaters-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-sweaters-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Sweaters & Sweatshirts -->
+{% elsif handle == "men-clothing" and current_tags contains "sweaters-sweatshirts" or current_tags contains "Sweaters & Sweatshirts"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-sweaters-sweatshirts-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-sweaters-sweatshirts-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Material</div>
+      {% for link in linklists.mens-sweaters-sweatshirts-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Pants -->
+{% elsif handle == "men-clothing" and current_tags contains "pants" or current_tags contains "Pants"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-pants-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-pants-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Fit</div>
+      {% for link in linklists.mens-pants-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Activewear -->
+{% elsif handle == "men-clothing" and current_tags contains "activewear" or current_tags contains "Activewear"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-activewear-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-activewear-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Activities</div>
+      {% for link in linklists.mens-activewear-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Jeans -->
+{% elsif handle == "men-clothing" and current_tags contains "jeans" or current_tags contains "Jeans"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-jeans-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-jeans-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-jeans-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Shorts -->
+{% elsif handle == "men-clothing" and current_tags contains "shorts" or current_tags contains "Shorts"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-shorts-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-shorts-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Inseam</div>
+      {% for link in linklists.mens-shorts-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Swimwear -->
+{% elsif handle == "men-clothing" and current_tags contains "swimwear" or current_tags contains "Swimwear"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-swimwear-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-swimwear-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Length</div>
+      {% for link in linklists.mens-swimwear-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Underwear and Socks -->
+{% elsif handle == "men-clothing" and current_tags contains "underwear-socks" or current_tags contains "Underwear & Socks"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-underwear-socks-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-underwear-socks-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Socks</div>
+      {% for link in linklists.mens-underwear-socks-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Lounge and Sleepwear -->
+{% elsif handle == "men-clothing" and current_tags contains "lounge-sleepwear" or current_tags contains "Lounge & Sleepwear"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-lounge-sleepwear-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-lounge-sleepwear-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Clothing -->
+{% elsif handle == "men-clothing"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.men-clothing-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Collections</div>
+      {% for link in linklists.men-clothing-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+{% comment %} Men's Shoes {% endcomment %}
+
+<!-- Men's Dress Shoes -->
+{% elsif handle == "men-shoes" and current_tags contains "dress-shoes" or current_tags contains "Dress Shoes"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-dress-shoes-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Collections</div>
+		{% for link in linklists.mens-dress-shoes-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Item Type</div>
+      {% for link in linklists.mens-dress-shoes-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men Shoes Loafers & Slip-Ons -->
+{% elsif handle == "men-shoes" and current_tags contains "loafers-slip-ons" or current_tags contains "Loafers & Slipons"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-shoes-loafers-slip-ons-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-shoes-loafers-slip-ons-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-shoes-loafers-slip-ons-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Athletic Shoes -->
+{% elsif handle == "men-shoes" and current_tags contains "athletic" or current_tags contains "Athletic"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-athletic-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-athletic-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Boots -->
+{% elsif handle == "men-shoes" and current_tags contains "boots" or current_tags contains "Boots"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-boots-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-boots-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-boots-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Oxfords -->
+{% elsif handle == "men-shoes" and current_tags contains "oxfords" or current_tags contains "Oxfords"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-oxfords-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-oxfords-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-oxfords-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Sandals & Flip-Flops -->
+{% elsif handle == "men-shoes" and current_tags contains "sandals-flip-flops" or current_tags contains "Sandals & Flip-flops"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-sandals-flip-flops-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-sandals-flip-flops-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-sandals-flip-flops-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Shoes -->
+{% elsif handle == "men-shoes" %}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.men-shoes-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Styles</div>
+		{% for link in linklists.men-shoes-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.men-shoes-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+{% comment %} Men's Accessories {% endcomment %}
+
+<!-- Men's Bags and Wallets -->
+{% elsif handle == "men-accessories" and current_tags contains "bags-wallets" or current_tags contains "Bags & Wallets"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-bags-wallets-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Bags</div>
+		{% for link in linklists.mens-bags-wallets-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Wallets</div>
+      {% for link in linklists.mens-bags-wallets-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Belts -->
+{% elsif handle == "men-accessories" and current_tags contains "belts" or  current_tags contains "Belts"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-belts-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-belts-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-belts-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Ties & Pocket Squares-->
+{% elsif handle == "men-accessories" and current_tags contains "ties-pocket-squares" or current_tags contains "Ties & Pocket Squares"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-ties-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.mens-ties-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Prints & Patterns</div>
+      {% for link in linklists.mens-ties-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Scarves & Hats -->
+{% elsif handle == "men-accessories" and current_tags contains "scarves-hats" or current_tags contains "Scarves & Hats"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.mens-scarves-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Style</div>
+		{% for link in linklists.men-scarves-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Occasion</div>
+      {% for link in linklists.mens-scarves-occasions.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Men's Accessories -->
+{% elsif handle == "men-accessories"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.men-accessories-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Collections</div>
+      {% for link in linklists.men-accessories-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+<!-- Top Level Menu Items Here -->
+{% elsif handle == "women"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.women-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Featured Stores</div>
+		{% for link in linklists.women-featured-stores.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Women's Collections</div>
+      {% for link in linklists.women-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+{% elsif handle == "men"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.men-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Featured Stores</div>
+		{% for link in linklists.men-featured-stores.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Men's Collections</div>
+      {% for link in linklists.men-collections.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+{% elsif handle == "shoes"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.shoes-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Women's Shoes</div>
+		{% for link in linklists.women-shoes-styles.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Men's Shoes</div>
+      {% for link in linklists.men-shoes-styles.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+    </div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+{% elsif handle == "accessories"%}
+
+	<div class="db-left-menu-sec">
+		{% for link in linklists.accessories-top.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>	
+	<div class="db-left-menu-sec">
+		<div class="db-left-menu-h">Collections</div>
+		{% for link in linklists.accessories-collections.links %}
+		<a href="{{ link.url }}">{{ link.title }}</a><br/>
+		{% endfor %}
+	</div>
+	<div class="db-left-menu-sec">
+      <div class="db-left-menu-h">Trending</div>
+      {% for link in linklists.trends-left-menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a><br/>
+      {% endfor %}
+	</div>
+
+{% else %}
+
+menu missing.
+
+
+{% endif %}

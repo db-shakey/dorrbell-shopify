@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="reading-column">
+    <h1 class="page-title">{{ page.title }}</h1>
+    <div class="rte">{{ page.content | replace: 'fullwidth"', '" data-fullwidth="true"' }}</div>
+    {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }}
+<style>
+  .social-links a { display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline; margin: 0; padding: 0.05em; color: #555!important; font-size: 22px!important; }
+</style>
+<span class="social-links">
+  <a href="https://www.facebook.com/inhomefittingroom" title="Follow us on Facebook" target="_blank"><span class="shopify-social-icon-facebook-circle"></span></a>
+  <a href="https://twitter.com/dorrbell" title="Follow us on Twitter" target="_blank"><span class="shopify-social-icon-twitter-circle"></span></a>
+  <a href="http://www.instagram.com/dorrbell" title="Follow us on Instagram" target="_blank"><span class="shopify-social-icon-instagram-circle"></span></a>
+  <a href="mailto:help@dorrbell.com" title="Email us" target="_blank"><span class="shopify-social-icon-email-circle"></span></a>
+</span>
+  </div>
+</div>
