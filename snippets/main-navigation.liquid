@@ -107,8 +107,7 @@
               <a href="{{ item.url }}" class="collection-item avatar black-text">
                 <img src="{{item | img_url: 'small'}}" title="{{item.title}}" class="circle square"/>
                 <span class="title">{{ item.product.metafields.product.brand }} {{ item.product.title }}</span>
-                <p>{{ item.variant.option1 }}<br>
-                   {{ item.variant.option2 }}
+                <p>{{ item.variant.option1 }}&nbsp;/&nbsp;{{ item.variant.option2 }}
                 </p>
                 <span class="secondary-content black-text cart-price">
                   {%if item.variant.metafields.price.metalistprice != nil and item.variant.metafields.price.metaprice != nil %}
