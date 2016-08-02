@@ -1,0 +1,137 @@
+<div class="container">
+
+  {% if cart.item_count == 0 %}
+
+  <h2 class="page-title">{{ 'cart.general.empty_title' | t }}</h2>
+  <div class="rte">{{ 'cart.general.empty_subtext_html' | t }}</div>
+
+  {% else %}
+
+  <div class="reading-column">
+
+    <h1 class="page-title">{{ 'cart.general.title' | t }}</h1>
+
+    {% if settings.cart_notification_show and settings.cart_notification_pos != 'under-items' %}
+      <div class="db-prod-notification">
+        {{ settings.cart_notification_text }}
+      </div>
+      {% endif %}
+
+    <form action="/cart" method="post" id="cartform">
+      <div class="spaced opposing-items">
+        {% for item in cart.items %}
+          {% if forloop.first %}
+          {% assign collection_url = item.product.collections.first.url %}
+          {% if collection_url == nil or collection_url == empty or collection_url == '/collections/frontpage' %}{% assign collection_url = '/collections/all' %}{% endif %}
+          {% endif %}
+        {% endfor %}
+        {%comment%}
+        <a class="more-link left" href="{{ collection_url }}">{{ 'cart.general.continue' | t }}</a>
+        <input type="submit" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
+		{%endcomment%}
+      </div>
+
+
+      <ul class="cart-items plain">
+        <li class="heading border-bottom cf">
+          <span class="description">{{ 'cart.label.description' | t }}</span>
+          <!--<span class="quantity">{{ 'cart.label.quantity' | t }}</span>-->
+          <span class="price">Paid At Checkout</span>
+          <span class="price">Paid If Kept{%comment%}{{ 'cart.label.price' | t }}{%endcomment%}</span>
+        </li>
+        {% for item in cart.items %}
+          <li class="item border-bottom cf">
+            <div class="description cf">
+              <a class="image" href="{{ item.url }}">
+                <img src="{{ item | img_url: 'small' }}"  alt="{{ item.title | escape }}" />
+              </a>
+
+              <div>
+                	{{ item.product.title | link_to: item.product.url }}<br/>
+                	Store: {{ item.product.metafields.product.brand}}<br/>
+                	Size: {{ item.variant.option1}}<br/>
+                	Color: {{ item.variant.option2}}
+              </div>
+              {% if item.product.variants.size > 1 %}
+              <span class="variant">
+                {{ item.variant.title }}<br/>
+                Sold By: {{ item.product.metafields.product.vendor}}
+              </span>
+              {% endif %}
+              {% comment %}
+              Line Item Properties
+              {% endcomment %}
+              {% if item.properties.size > 0 %}
+              <p>
+                {% for p in item.properties %}
+                {% unless p.last == blank %}
+                {{ p.first }}:
+                {% if p.last contains '/uploads/' %}
+                <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                {% else %}
+                {{ p.last }}
+                {% endif %}
+                <br />
+                {% endunless %}
+                {% endfor %}
+              {% endif %}
+
+              <p style="margin-top:10px;"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="db_remove feature-col">{{ 'cart.general.remove' | t }}</a></p>
+            </div>
+            <!--<div class="quantity">
+              <input class="select-on-focus" type="text" size="2" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" />
+            </div>-->
+            {%comment%}
+            <div class="price"><h5>{{ item.line_price | money }}</h5></div>
+            {%endcomment%}
+            <div class="price">
+              	<h5>$ 0.00</h5>
+            </div>
+            <div class="price">
+              	<h5>{{item.variant.metafields.price.metaprice | money}}</h5>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+	  {%comment%}
+      <div class="row align-right">
+        	<h2>{{ 'cart.label.subtotal' | t }}: {{ cart.total_price | money }}</h2>
+      </div>
+      {%endcomment%}
+
+      <div class="spaced align-right">
+        <a class="more-link left" style="margin-right:20px;" href="{{ collection_url }}">{{ 'cart.general.continue' | t }}</a>
+        <!--<input type="submit" class="alt" id="update-cart" name="update" value="{{ 'cart.general.update' | t }}" />-->
+      </div>
+
+      {% if settings.cart_notification_show and settings.cart_notification_pos == 'under-items' %}
+      <div class="notification">
+        <h5 class="no-margin">{{ settings.cart_notification_text }}</h5>
+		{% if settings.cart_notification_contlink_show %}<a class="more-link" href="{{ collection_url }}">{{ 'cart.general.continue' | t }}</a>{% endif %}
+      </div>
+      {% endif %}
+    <hr/>
+      <div>
+        <h4>Deliver Recommended Products?</h4>
+        <p>This option tells our shopping assistant and retailer to include additional curated options with the order.</p>
+        <div class="switch">
+          <label>
+            No
+            <input type="checkbox" name="attributes[request_additional_items]" id="toggle" checked>
+            <span class="lever"></span>
+            Yes
+          </label>
+
+        </div>
+
+      </div>
+
+      {% include 'snippet-local-delivery-cart' %}
+
+    </form>
+
+  </div>
+
+  {% endif %}
+
+</div>
