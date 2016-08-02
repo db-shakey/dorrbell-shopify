@@ -109,6 +109,16 @@ span.badge.new{
       height: 2rem;
     }
   }
+  p{
+     font-size: smaller;
+     margin: 0;
+     font-weight: bold;
+   }
+   .title{
+     font-size: small !important;
+     max-width: 80%;
+     display: inline-block;
+   }
 }
 #drawer-cart{
   .collection-header{
