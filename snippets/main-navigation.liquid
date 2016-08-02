@@ -110,9 +110,9 @@
                 <p>{{ item.variant.option1 }}&nbsp;/&nbsp;{{ item.variant.option2 }}
                 </p>
                 <span class="secondary-content black-text cart-price">
-                  {%if item.variant.metafields.price.metalistprice != nil and item.variant.metafields.price.metaprice != nil %}
-                    <span>{{item.variant.metafields.price.metaprice|money}}</span><br/>
-                    {{item.variant.metafields.price.metalistprice|money}}
+                  {%if item.variant.metafields.price.metalistprice != nil and item.variant.metafields.price.metaprice != nil and item.variant.metafields.price.metaprice != item.variant.metafields.price.metalistprice %}
+                    <span>{{item.variant.metafields.price.metalistprice|money}}</span><br/>
+                    {{item.variant.metafields.price.metaprice|money}}
                   {% elsif item.variant.metafields.price.metaprice != nil %}
                     {{item.variant.metafields.price.metaprice | money}}
                   {% else %}
