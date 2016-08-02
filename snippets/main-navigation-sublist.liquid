@@ -1,7 +1,47 @@
-<nav class="hide-on-med-and-down dorrbell-blue darken-1 menu">
-  <div class="nav-wrapper center-align">
 
-  <ul class="center">
+<div class="navbar-fixed secondary-nav hide-on-med-and-down">
+  <nav>
+    <div class="row">
+      <div class="col s7 offset-s1">
+        <ul class="tabs">
+          <li class="tab">
+            <a href="/" class="black-text" target="_self">Home</a>
+          </li>
+          {% for link in linklists.main-menu.links %}
+
+            <li class="tab"><a href="{{ link.url }}" class="black-text tab-{{link.title}}{% if link.active %} active {%endif%}" target="_self">{{ link.title }}</a></li>
+            <script>
+              var path= window.location.pathname;
+              var lUrl = "{{link.url}}";
+              if(lUrl.indexOf('#') != -1)
+                lUrl = lUrl.substring(0, lUrl.indexOf('#'));
+
+              if(path !='/collections/women-accessories' && path.indexOf(lUrl) != -1){
+                $("ul.tabs .tab").last().find("a").addClass("active");
+              }else if(path == '/collections/women-accessories' && lUrl == '/collections/accessories')
+                $("ul.tabs .tab").last().find("a").addClass("active");
+            </script>
+          {%endfor%}
+        </ul>
+      </div>
+      <div class="col s3 offset-s1">
+        <form action="/search" method="get">
+          {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
+          <div class="input-field">
+            <i class="material-icons prefix">search</i>
+            <input id="search" type="search" required name="q" placeholder="{{ 'layout.header.search' | t }}"/>
+          </div>
+        </form>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+  <!--
+  <div class="hide-on-med-and-down">
+
+  <ul class="tabs">
     {% if settings.header_layout == 'nav' %}<li class="logo-item logo-item-left">{{ logo_html }}</li>{% endif %}
     {% for link in linklists.main-menu.links %}
 
@@ -15,7 +55,7 @@
         {% if has_drop_down %}{% assign dropdown_style = 'drop-norm' %}{% endif %}
       {% endif %}
 
-      <li class="nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} dropdown {{ dropdown_style }}{% endif %}">
+      <li class="nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if link.active %} active{% endif %}{% if has_drop_down %} dropdown {{ dropdown_style }}{% endif %} tab">
 
         <a class="nav-item-link" href="{{ link.url }}">
           {{ link.title }}
@@ -76,4 +116,4 @@
     {% endfor %}
   </ul>
   </div>
-</nav>
+-->

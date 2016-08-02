@@ -28,15 +28,54 @@ h1,p.db-text .db-text{font-family:proxima-nova,sans serif}.text.selected{padding
   .referral-link{
     min-width: 10rem;
   }
-  .search{
-    min-width: 20vw;
-    margin-right: 1rem;
-  }
   .empty-profile-icon{
     display: none;
   }
   .profile-photo{
     max-width: 2.5rem;
+  }
+}
+.primary-nav{
+  box-shadow: none;
+  .dropdown-button{
+    min-width: 10rem;
+  }
+}
+.secondary-nav{
+  z-index: 997;
+}
+.secondary-nav nav{
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+  height: initial;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  .tabs{
+    div.bacon-menu{
+      z-index:1000 !important;
+      position: fixed !important;
+    }
+    overflow: hidden;
+  }
+  a{
+    font-size: smaller;
+  }
+  >.row, input{
+      margin-bottom: 0;
+  }
+  >.row .s7.offset-s1, .bacon-menu{
+    margin-left: 7% !important;
+  }
+  form{
+    line-height: initial;
+    margin-top: .5rem;
+    .input-field{
+      >i{
+        line-height: initial;
+      }
+      input{
+        padding-left: .5rem;
+      }
+    }
   }
 }
 .db-prod-notification a{
@@ -85,18 +124,6 @@ span.badge.new{
       height: 2.5rem;
     }
   }
-  .collection-item.avatar{
-    p{
-      font-size: smaller;
-      margin: 0;
-      font-weight: bold;
-    }
-    .title{
-      font-size: small;
-      max-width: 80%;
-      display: inline-block;
-    }
-  }
 }
 #drawer-menu{
   .collection-item.avatar{
@@ -111,6 +138,9 @@ span.badge.new{
     a.secondary-content{
       top: 0;
       right: 0;
+    }
+    .dropdown-content li a>i{
+      height: initial;
     }
   }
 }
@@ -156,14 +186,7 @@ span.badge.new{
   }
 }
 .menu{
-  ul li.nav-item{
-    float: none;
-    display: inline-block;
-    a{
-      padding: 0 2rem;
-      color: #fff;
-    }
-  }
+
 }
 #bacon-highway.bacon-menu.bacon-highway-menu.top-down:not(.bacon-mobile) .highways{
   display: block !important;
@@ -260,4 +283,262 @@ span.badge.new{
  *************************/
 .clickyboxes.options-color li a{
   background-color: #fff !important;
+}
+
+/*************************
+ *
+ * Product List
+ *
+ *************************/
+ a.quick-buy{
+   background-color: $primary-color;
+   color: #fff;
+   &:hover, &:focus{
+     color: #fff;
+   }
+ }
+
+/*************************
+ *
+ * Home Page
+ *
+ *************************/
+
+.home-container {
+  width: auto;
+  text-align: center;
+  box-sizing:border-box;
+}
+
+.home-content {
+  max-width: 1250px;
+  min-width: 320px;
+  display: inline-block;
+  box-sizing:border-box;
+}
+
+#home-hero {
+  background: url("https://cdn.shopify.com/s/files/1/1335/2949/t/3/assets/header.jpg?17542164952260543259") no-repeat 85% top;
+  background-size: cover;
+  height: 400px;
+}
+
+#relax {
+ display: none;
+}
+
+.message-bar {
+  font-size: 14px;
+  color: #FF3366;
+  padding: 10px;
+  box-sizing:border-box;
+}
+
+#stylist {
+  margin-top: 10px;
+  height: 150px;
+  background: url( "https://cdn.shopify.com/s/files/1/1335/2949/t/3/assets/stylist.jpg?9330157544531717688" ) no-repeat 35% 0%;
+  background-size: cover;
+  background-color: #edf9ff;
+  border-top: 1px solid #5f666e;
+  border-bottom: 1px solid #5f666e;
+  box-sizing:border-box;
+}
+
+#stylist-text {
+  position: relative;
+  left: 30%;
+  top: 35%;
+  max-width: 50%;
+  font-size: 18px;
+  color: #0f6175;
+  text-align: left;
+
+}
+
+.home-header {
+  font-size: 24px;
+  padding: 50px 0;
+  text-transform: uppercase;
+  color: #5f666e;
+  font-weight: 100;
+  box-sizing:border-box;
+  line-height: 1.4;
+
+}
+
+.home-deals-header {
+  font-size: 16px;
+  color: #5f666e;
+  text-transform: none;
+}
+
+.deals-header {
+  padding: 25px 0;
+}
+
+#featured-stores, #local-fav, #browse-women, #deals {
+  width: auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.deals-gutter {
+  width: 1.6%;
+  max-width: 20px;
+  float:left;
+}
+
+.deals-col {
+  width: 14.8%;
+  max-width: 185px;
+  float:left;
+}
+
+.deals-desc {
+ font-size: 14px;
+  line-height: 1.4;
+  color: #5f666e;
+}
+
+.markdown {
+  text-decoration: line-through;
+  color: #00cc33 ;
+  padding-right:5px;
+
+}
+
+.featured-store-left, .featured-store-right,  {
+  width: 48%;
+  max-width: 600px;
+  box-sizing:border-box;
+}
+
+.featured-store-center {
+  width: 4%;
+  max-width: 50px;
+}
+
+.featured-store-left {
+ float: left;
+}
+
+.featured-store-right {
+ float: right;
+}
+
+.local-fav-col, .browse-col {
+  width: 22%;
+  max-width: 275px;
+  box-sizing:border-box;
+  float:left;
+}
+
+.local-fav-gutter, .browse-gutter {
+  width: 4%;
+  max-width: 50px;
+  float:left;
+}
+
+.local-fav-img, .browse-img, .deals-img {
+ padding-bottom: 10px;
+}
+
+.local-fav-desc, .browse-header {
+ font-size: 18px;
+  color: #5f666e;
+  text-align:left;
+  line-height: 1.25;
+}
+
+.browse-row-top, .browse-row {
+ overflow: hidden;
+}
+
+.browse-row {
+ padding-top: 50px;
+}
+
+.browse-header {
+ text-align: center;
+}
+
+.home-store-msg {
+  font-size: 14px;
+  color: #CC0000;
+
+}
+
+@media (min-width: 482px) and (max-width: 768px) {
+
+#stylist-text {
+  max-width: 55%;
+  top: 30%;
+}
+
+}
+
+
+@media (max-width: 481px) {
+
+    /*************************
+    *
+    * Home Page
+    *
+    *************************/
+
+#home-hero {
+  background-position: 40% top;
+}
+
+#relax {
+  display: block;
+  max-width: 250px;
+  max-height: 250px;
+  position: relative;
+  top: 20%;
+  left: 15%;
+
+
+
+}
+
+#deals {
+  display: none;
+}
+
+  .featured-store-left, .featured-store-right, .local-fav-col  {
+    width: auto;
+    max-width: 100%;
+    float: none;
+  }
+
+  .featured-store-center, .local-fav-gutter, .home-store-msg {
+    display: none;
+  }
+
+  #stylist{
+   background-position: 26% 0%;
+  }
+
+  #stylist-text {
+  max-width: 55%;
+  top: 10%;
+  left: 40%;
+}
+
+.home-header {
+  padding: 25px 0;
+}
+
+.local-fav-desc {
+  position: absolute;
+  margin-top: -40%;
+  color: #FFF;
+  text-align: center;
+  width:100%;
+  background-color:rgba(0, 0, 0, 0.5);
+}
+
+
 }

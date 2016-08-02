@@ -47,6 +47,9 @@
     </div>
   </div>
 </section>
+<section id="mens-womens">
+  {% include 'home-mens-womens' %}
+</section>
 <!-- End slider -->
 {% endif %}
 {% endcapture %}
@@ -61,11 +64,12 @@
 {% assign handle = settings[coll_setting_id] %}
 {% assign collection = collections[handle] %}
 <!-- Start products -->
-<section class="border-top section products-section">
+<section class="border-top section products-section" style="padding-top: 75px; padding-bottom: 20px; clear: both;">
   <div class="container">
     {% if collection.products.size == 0 %}
     {% include 'onboarding-product-row' %}
     {% else %}
+    {% comment %}
     <div class="opposing-items">
       <h1 class="section-heading left">{{ collection.title | link_to: collection.url }}</h1>
       <a class="btn section-count" href="{{ collection.url }}">
@@ -73,6 +77,7 @@
         <span class="tiny">{{ collection.products_count }}</span>
       </a>
     </div>
+    {% endcomment %}
     <div class="row grid {% if settings[max_count_setting_id] == settings.homepage_products_per_row %}one-row{% endif %}" {% if settings.coll_align_heights %}data-normheights=".image" data-normheights-inner="img"{% endif %}>
       {% for product in collection.products limit: settings[max_count_setting_id] %}
         {% include 'product-block' %}
@@ -185,17 +190,6 @@
   </div>
 </section>
 <!-- end content page -->
-<!-- start custom Dorrbell section -->
-<div class="container" style="padding: 75px 0px;">
-  <div style="width: 50%;float:left;padding:0 20px 0 0;">
-    <a href="/collections/women-clothing/new"><img src="https://cdn.shopify.com/s/files/1/0852/2830/t/9/assets/home-new-arrivals.jpg?13360852106318053868" border="0"></a>
-  </div>
-  <div style="width: 50%; float:left;padding:0 0 0 20px;">
-    <a href="/collections/women-clothing/under-50"><img src="https://cdn.shopify.com/s/files/1/0852/2830/t/9/assets/home-under-50.jpg?9839266594432991318" border="0"></a>
-  </div>
-</div>
-<div style="height:200px;">sfadafdasfd</div>
-<!-- end custom section -->
 {% endif %}
 {% endcapture %}
 
@@ -267,6 +261,8 @@ J: Custom HTML
 {% elsif item == 'J' %} <!-- Slot J --> {{ custom_html }}
 {% endif %}
 {% endfor %}
+
+{% include 'unbounce-conversion-tracker' %}
 
 
 

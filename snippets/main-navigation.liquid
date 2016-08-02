@@ -15,25 +15,21 @@
 
       <ul class="right hide-on-med-and-down">
         <li>
-            <a onclick="$('#search').focus()"><i class="material-icons">search</i></a>
-        </li>
-        <li class="input-field search" >
-            <form action="/search" method="get">
-              {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
-              <input id="search" type="search" required name="q" placeholder="{{ 'layout.header.search' | t }}"/>
-            </form>
+          <a href="/pages/referrals">Give $10, Get $10</a>
         </li>
         <li>
           <a class="dropdown-button" href="#!" data-activates="account-dropdown-full">
             <i class="material-icons left empty-profile-icon">person</i>
             <img src="" class="circle profile-photo"></img>
-
             <span class="username"></span>
           </a>
           <ul id="account-dropdown-full" class="dropdown-content">
-            <li><a href="/pages/referrals" class="referral-link"></a></li>
-            <li class="divider"></li>
-            <li><a href="javascript:void(0);" id="logout-link" onclick="dorrbell.logout();">Logout</a></li>
+            <li>
+              <a href="javascript:void(0);" id="logout-link" onclick="dorrbell.logout();">
+                <i class="material-icons left">exit_to_app</i>
+                Logout
+              </a>
+            </li>
           </ul>
         </li>
         <li class="cart-qty">
@@ -53,7 +49,12 @@
         <ul id="account-dropdown" class="dropdown-content">
           <li><a href="/pages/referrals" class="referral-link"></a></li>
           <li class="divider"></li>
-          <li><a href="javascript:void(0);" id="logout-link" onclick="dorrbell.logout();">Logout</a></li>
+          <li>
+            <a href="javascript:void(0);" id="logout-link" onclick="dorrbell.logout();">
+              <i class="material-icons left">exit_to_app</i>
+              Logout
+            </a>
+          </li>
         </ul>
         <ul>
           <li class="collection-item avatar dorrbell-blue darken-1 white-text hide-on-large-only">
@@ -106,7 +107,7 @@
               <a href="{{ item.url }}" class="collection-item avatar black-text">
                 <img src="{{item | img_url: 'small'}}" title="{{item.title}}" class="circle square"/>
                 <span class="title">{{ item.product.metafields.product.brand }} {{ item.product.title }}</span>
-                <p>{{ item.variant.option1 }}&nbsp;/&nbsp;
+                <p>{{ item.variant.option1 }}<br>
                    {{ item.variant.option2 }}
                 </p>
                 <span class="secondary-content black-text cart-price">
@@ -131,8 +132,12 @@
             {% endif %}
           </div>
        </div>
+
     </div>
+
   </nav>
+
+
 
   {% raw %}
     <script type="text/x-handlebars-template" id="menu-template">
