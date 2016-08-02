@@ -1,1 +1,4 @@
 .sass-cache/
+config.yml
+layout/theme.liquid
+snippets/firebase.liquid
