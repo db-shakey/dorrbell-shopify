@@ -1,0 +1,76 @@
+<div class="db-login-col db-login-lt" style="width: 100%;">
+  <div class="login-form-wrapper">
+    <img src="{{ 'logo-beta-store-login.png' | asset_url }}" style="width: 320px; height: 55px;">
+    <div class="db-login-form">
+    {% form 'customer_login' %}
+    {% if form.errors %}
+    <div id="login-errors" class="db-notification_errors">
+      {{ form.errors | default_errors }}
+    </div>
+    {% endif %}
+    <div id="login">
+      <input type="hidden" id="return_to" name="checkout_url" value="/index" />
+        <input type="email" value="" name="customer[email]" placeholder=" Email" id="customer_email" class="text db-login" autofocus />
+        <input type="password" value="" name="customer[password]" id="customer_password" placeholder=" Password" class="text db-login" size="16" />
+        <input class="btn db-login" type="submit" value="{{ 'customer.login.sign_in' | t }}" />
+      <div id="disclaimer" class="disclaimer">
+        <p class="db-text"><a href="#" onclick="showRecoverPasswordForm();return false;" class="db_remove">Forgot your password?</a></p>
+      </div>
+    </div>
+    {% endform %}
+
+    <div id="recover-password" style="display:none;">
+      <h2 style="font-family: Proxima-Nova, sans-serif;">Forgot Your Password</h2>
+      <p class="db-text" style="font-family: Proxima-Nova, sans-serif;">Having trouble logging in?<br/>To reset your password, enter your email.</p>
+
+      {% form 'recover_customer_password' %}
+      <input type="hidden" name="checkout_url" value="/index.html" />
+      {% if form.posted_successfully? %}
+      <script>$(function(){ showRecoverPasswordForm(); });</script>
+      <div class="notification errors">
+        <p class="db-text" style="color: #FF6666;">Login credentials invalid</p>
+      </div>
+      {% endif %}
+      {% if form.errors %}
+      <script>$(function(){ showRecoverPasswordForm(); });</script>
+      <div class="notification errors">
+        <p class="db-text" style="color: #FF4444;">No account found with that email.</p>
+      </div>
+      {% endif %}
+      <div class="input-row">
+        <input type="email" value="" name="email" id="recover-email" class="text db-login" placeholder=" Email"/>
+      </div>
+      <div class="input-row">
+        <input class="btn db-login" type="submit" value="{{ 'customer.login.submit_recover' | t }}" /> {%comment%}{{ 'customer.general.or' | t }}{%endcomment%}
+        <p class="db-text"><a class="db_remove" href="#" onclick="hideRecoverPasswordForm();return false;">{{ 'customer.login.cancel' | t }}</a></p>
+      </div>
+      {% endform %}
+    </div>
+  </div> 
+    <!--<div>
+      <p class="db-text"><span style="font-family:proxima-nova;">Don't have an account?</span><a class="db_remove" id="request-invitation" href="http://www.dorrbell.com/register" style="padding-left:15px;">Request an invitation</a></p></div>
+    </div>-->
+</div>
+<!--<div class="db-login-col db-login-rt">
+	<div class="db-login-rt-content black">
+      <div class="db-login-rt-content-head">We deliver the fitting room to your living room.</div>
+      <div class="db-login-rt-content-subhead">Clothes from your favorite stores delivered to your door. First delivery is free.</div>
+      <a class="db-btn" href="http://www.dorrbell.com/register"><div class="btn db-btn db-btn-login">Sign Up</div></a>
+  	</div>
+</div> -->
+
+<script type="text/javascript">
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'block';
+    document.getElementById('login').style.display='none';
+    document.getElementById('login-errors').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('login').style.display = 'block';
+    document.getElementById('login-errors').style.display='none';
+  }
+
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+</script>

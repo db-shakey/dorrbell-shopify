@@ -1,0 +1,162 @@
+
+
+<div class="navbar-fixed">
+
+
+
+  <nav id="db-navbar" class="primary-nav">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo valign-wrapper">
+        {{ 'logo.png' | asset_url | img_tag }}
+      </a>
+      <ul class="right hide-on-large-only">
+        <li><a data-activates="drawer-cart" class="btn-cart"><i class="material-icons">shopping_cart</i></a></li>
+      </ul>
+
+      <ul class="right hide-on-med-and-down">
+        <li>
+            <a onclick="$('#search').focus()"><i class="material-icons">search</i></a>
+        </li>
+        <li class="input-field search" >
+            <form action="/search" method="get">
+              {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
+              <input id="search" type="search" required name="q" placeholder="{{ 'layout.header.search' | t }}"/>
+            </form>
+        </li>
+        <li>
+          <a class="dropdown-button" href="#!" data-activates="account-dropdown-full">
+            <i class="material-icons left empty-profile-icon">person</i>
+            <img src="" class="circle profile-photo"></img>
+
+            <span class="username"></span>
+          </a>
+          <ul id="account-dropdown-full" class="dropdown-content">
+            <li><a href="/pages/referrals" class="referral-link"></a></li>
+            <li class="divider"></li>
+            <li><a href="javascript:void(0);" id="logout-link" onclick="dorrbell.logout();">Logout</a></li>
+          </ul>
+        </li>
+        <li class="cart-qty">
+          <a class="waves-effect waves-light btn btn-cart" data-activates="drawer-cart">
+            <i class="material-icons left">shopping_cart</i>
+            Fitting Room
+          </a>
+          {% if cart.item_count > 0 %}
+            <span class="badge new">{{ cart.item_count }}</span>
+          {% endif %}
+        </li>
+      </ul>
+
+
+      <a href="#" data-activates="drawer-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+      <div id="drawer-menu" class="side-nav collection with-header">
+        <ul id="account-dropdown" class="dropdown-content">
+          <li><a href="/pages/referrals" class="referral-link"></a></li>
+          <li class="divider"></li>
+          <li><a href="javascript:void(0);" id="logout-link" onclick="dorrbell.logout();">Logout</a></li>
+        </ul>
+        <ul>
+          <li class="collection-item avatar dorrbell-blue darken-1 white-text hide-on-large-only">
+            <img src="" class="circle profile-photo"></img>
+            <i class="material-icons empty-profile-icon">person</i>
+            <span class="title">
+              <a class="dropdown-button username white-text" href="#!" data-activates="account-dropdown"></a>
+            </span>
+            <a class="secondary-content white-text" onclick="$('.button-collapse').sideNav('hide');"><i class="material-icons">close</i></a>
+
+          </li>
+          <li class="container collection-item hide-on-large-only">
+            <form action="/search" method="get">
+              {% if settings.search_prods_only %}<input type="hidden" name="type" value="product">{% endif %}
+              <input id="search" type="search" required name="q" placeholder="{{ 'layout.header.search' | t }}"/>
+            </form>
+            <i class="material-icons secondary-content">search</i>
+          </li>
+          <li class="no-padding">
+            <ul class="collapsible" data-collapsible="accordion">
+              {% for link in linklists.main-menu.links %}
+                <li>
+                    <a class="collapsible-header waves-effect" data-href="{{link.url}}">{{link.title}}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+
+
+      <div id="drawer-cart" class="side-nav">
+        <ul class="collection with-header">
+
+          <li class="collection-header dorrbell-blue darken-1 white-text">
+
+            <h5 class="white-text cart-note">
+              Next Delivery: Within 1 hour
+              <a class="secondary-content white-text" onclick="$('.btn-cart').sideNav('hide');"><i class="material-icons">close</i></a>
+            </h5>
+
+          </li>
+          {% if cart.item_count == 0 %}
+            <li class="collection-item">
+              Your cart is empty
+            </li>
+          {% else %}
+            {% for item in cart.items %}
+              <a href="{{ item.url }}" class="collection-item avatar black-text">
+                <img src="{{item | img_url: 'small'}}" title="{{item.title}}" class="circle square"/>
+                <span class="title">{{ item.product.metafields.product.brand }} {{ item.product.title }}</span>
+                <p>{{ item.variant.option1 }}&nbsp;/&nbsp;
+                   {{ item.variant.option2 }}
+                </p>
+                <span class="secondary-content black-text cart-price">
+                  {%if item.variant.metafields.price.metalistprice != nil and item.variant.metafields.price.metaprice != nil %}
+                    <span>{{item.variant.metafields.price.metaprice|money}}</span><br/>
+                    {{item.variant.metafields.price.metalistprice|money}}
+                  {% elsif item.variant.metafields.price.metaprice != nil %}
+                    {{item.variant.metafields.price.metaprice | money}}
+                  {% else %}
+                    {{0|money}}
+                  {% endif %}
+                </span>
+              </a>
+            {% endfor %}
+          {% endif %}
+          </ul>
+          <div class="footer-section">
+            {% if cart.item_count == 0 %}
+              <a disabled class="btn disabled">Checkout</a>
+            {% else %}
+              <a href="/cart" class="btn">Checkout</a>
+            {% endif %}
+          </div>
+       </div>
+    </div>
+  </nav>
+
+  {% raw %}
+    <script type="text/x-handlebars-template" id="menu-template">
+      <div class="collapsible-body">
+        <ul class="collapsible" data-collapsible="accordion">
+          {{#each this.sub_items.items}}
+            <li>
+              <a class="collapsible-header waves-effect">{{this.display_title}}</a>
+              {{#if this.sub_items}}
+                <div class="collapsible-body">
+                  <ul class="collapsible" data-collapsible="accordion">
+                    {{#each this.sub_items}}
+                      <li>
+                        <a href="{{this.path}}" class="gchild">{{this.display_title}}</a>
+                      </li>
+                    {{/each}}
+                  </ul>
+                </div>
+              {{/if}}
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </script>
+  {%endraw%}
+
+</div>

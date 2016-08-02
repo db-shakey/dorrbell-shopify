@@ -1,0 +1,227 @@
+{{ '//cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.js' | script_tag}}
+{{ '//cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/jquery.datetimepicker.min.css' | stylesheet_tag}}
+
+
+{{ '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js' | script_tag}}
+
+
+<style>
+  .picker__close, .picker__today{
+   	padding: 0 .5rem;
+  }
+  .picker__clear{
+   	display: none;
+  }
+  .delivery-time{
+   	margin-top: 3rem;
+  }
+  .delivery-time .collection{
+   	padding: 0px;
+  }
+  .delivery-time .modal{
+   	max-width:  30%;
+    min-width: 300px;
+  }
+  .delivery-time .collection a{
+   	cursor: pointer;
+  }
+  #checkout{
+   background: #1dc2e9;
+   color: white;
+    width: initial;
+  }
+  .input-field label{
+   width: 100%;
+  }
+  .input-field label:after, .field-error{
+    font-size: smaller;
+    color: #F44336;
+  }
+  .field-error{
+   	display: none;
+  }
+  .invalid+label+p.field-error{
+   	display: block;
+  }
+</style>
+
+ <input type="hidden" id="customer-id" name="attributes[customer-id]"/>
+ <div class="delivery-time">
+   <h4>Delivery Information</h4>
+   <div class="row">
+     <div class="input-field col s12 m6">
+       <input type="date" class="datepicker" id="delivery-date" name="attributes[local_delivery_request]" required="" aria-required="true">
+       <label for="delivery-date" class="date-label" data-error="Please select a delivery date and time" data-success="">Date</label>
+     </div>
+     <div class="input-field col s12 m6">
+       <input placeholder="Referral Code" id="referral-code" name="attributes[referral-code]" type="text">
+       <label for="first_name" class="referral-text"></label>
+     </div>
+   </div>
+   <div class="row">
+     <div class="input-field col s12">
+       <textarea id="note" class="materialize-textarea" name="note">{{cart.note}}</textarea>
+       <label for="textarea1">{{ 'cart.label.note' | t }}</label>
+     </div>
+   </div>
+   <div class="row">
+     <div class="right-align">
+       <input type="checkbox" id="agree" required="" aria-required="true"/>
+     	 <label for="agree">I agree with the <a class="db-terms" href="http://www.dorrbell.com/terms" target="_blank">Terms of Service</a></label>
+       <p class="field-error">You must agree with the Terms of Service to checkout</p>
+     </div>
+   </div>
+   <div class="row">
+     <div class="right-align">
+       <button id="checkout" name="checkout" class="btn" type="submit" onclick="return timeSelector.doSubmit(event);">{{ 'cart.general.checkout' | t }}</button>
+     </div>
+   </div>
+    <!-- Modal Structure -->
+    <div id="time-modal" class="modal">
+      <div class="modal-content">
+        <h4>Delivery Time</h4>
+        <div class="collection" id="time-options"></div>
+      </div>
+      <div class="modal-footer">
+      	<a onclick="timeSelector.goBack();" class="waves-effect waves-green btn-flat">Go Back</a>
+      </div>
+    </div>
+</div>
+
+
+
+<script>
+   Date.prototype.addDays = function(days)
+  {
+      var dat = new Date(this.valueOf());
+      dat.setDate(dat.getDate() + days);
+      return dat;
+  }
+
+   var referral = {
+     init : function(user){
+       if(user){
+         firebase.database().ref('customers/' + user.uid).on('value', function(snapshot){
+          	var contact = snapshot.val().contact;
+           	$("#customer-id").val(contact.Username__c);
+           	if(contact.Referred_By__c && !contact.Orders__r){
+           		$(".referral-text").html("Use a friend's referral code and you'll both get $10 off your next order or leave this field blank to redeem your existing discount.");
+           	}else
+              $(".referral-text").html("Use a friend's referral code and you'll both get $10 off your next order!");
+         });
+       }
+     }
+   }
+
+   var timeSelector = {
+     inputFormat : "ddd mmm d yyyy",
+     format : "ddd MMM D YYYY [between] hh:mm A [and] ",
+     hours : [12, 13, 14, 15, 16, 17],
+     init : function(){
+       var $input = $('.datepicker').pickadate({
+          closeOnSelect : true,
+          min : new Date(),
+          max : new Date().addDays(7),
+          container : "body",
+          onSet : timeSelector.onDateSelect,
+          onClose : timeSelector.onClose,
+          format : this.inputFormat,
+          closeOnClear : false
+       });
+       this.picker = $input.pickadate('picker');
+     },
+     onDateSelect : function(d){
+		this.close();
+       $("#delivery-date").removeClass("invalid");
+       $("#time-modal").openModal({
+         ready : function(){
+           timeSelector.renderAvailableTimes();
+           // grab the dark overlay
+           var overlay = $('.lean-overlay');
+           // remove it
+           overlay.detach();
+           // attach it to the thing you want darkened
+           $('.delivery-time').after(overlay);
+         },
+         complete : function(){
+           // grab the dark overlay
+           var overlay = $('.lean-overlay');
+           // remove it
+           overlay.detach();
+         },
+         dismissible : false,
+         opacity: .4,
+         in_duration: 0
+       });
+     },
+     goBack : function(){
+       var that = this;
+       $("#time-modal").closeModal({
+         out_duration: 0,
+         complete : function(){
+       		that.picker.open();
+         }
+       });
+
+     },
+     renderAvailableTimes : function(){
+       $("#time-options").html('');
+       var selectedDate = moment($("#delivery-date").val(), "ddd MMM D YYYY");
+       var hasTime = false;
+       if(selectedDate.isSame(moment(), 'day')){
+         for(var i = 0; i<this.hours.length; i++){
+           var hour = moment(this.hours[i], "HH");
+           if(hour.diff(moment(), 'hours') >= 1){
+            $("#time-options").append('<a class="collection-item" onclick="timeSelector.onTimeSelect(\'' + hour.format('HH:mm') + '\')">' + hour.format('hh:mm A [-] ') + hour.add(1, 'hours').format('hh:mm A') + '</a>');
+           	hasTime = true;
+           }
+         }
+       }else{
+		for(var i = 0; i<this.hours.length; i++){
+           var hour = moment(this.hours[i], "HH");
+           $("#time-options").append('<a class="collection-item" onclick="timeSelector.onTimeSelect(\'' + hour.format('HH:mm') + '\')">' + hour.format('hh:mm A [-] ') + hour.add(1, 'hours').format('hh:mm A') + '</a>');
+          hasTime = true;
+         }
+       }
+
+       if(!hasTime){
+         $("#time-options").html("<p style='padding:1rem;'>There are no delivery times available for this day.</p>");
+       }
+     },
+     onTimeSelect : function(startTime, e){
+       $("#time-modal").closeModal();
+       var selectedDate = $("#delivery-date").val();
+       var m = moment(selectedDate + ' ' + startTime, "ddd MMM D YYYY HH");
+       $("#delivery-date").val(m.format(timeSelector.format) + m.add(1, 'hours').format('hh:mm A'));
+
+       return false;
+     },
+     onClose : function(){
+		$(document.activeElement).blur()
+     },
+
+     doSubmit : function(e){
+       $("input").removeClass("invalid");
+       if(!$("#delivery-date").val() || $("#delivery-date").val() == "" || $("#delivery-date").val().indexOf("between") < 0){
+         $("#delivery-date").addClass("invalid");
+         e.preventDefault();
+         return false;
+       }else if($("#agree").prop("checked") !== true){
+         $("#agree").addClass("invalid");
+         e.preventDefault();
+      	 return false;
+       }else
+         fbq('track', 'InitiateCheckout');
+     }
+   }
+
+   $(document).ready(function(){
+     	firebase.auth().onAuthStateChanged(referral.init);
+     	timeSelector.init();
+   });
+
+
+
+
+
+</script>

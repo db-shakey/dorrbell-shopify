@@ -1,0 +1,74 @@
+
+
+<script>
+ $(document).ready(function(){
+
+   dorrbell.navigation = {
+     init : function(){
+       // Initialize collapse button
+       $(".button-collapse").sideNav({
+         menuWidth: 300,
+         closeOnClick : false
+       });
+       $('.collapsible').collapsible();
+       $('.btn-cart').sideNav({
+           menuWidth: 350, // Default is 240
+           edge: 'right',
+           closeOnClick : false
+         }
+       );
+     }
+   };
+
+
+   (function(){
+
+     var data = {
+       init : function(user){
+         console.log(user);
+         if(user){
+           firebase.database().ref('customers/' + user.uid).on('value', function(snapshot){
+             if(snapshot.val()){
+               if(snapshot.val().contact.Name){
+                 var contact = snapshot.val().contact;
+                 $(".username").html(snapshot.val().contact.Name);
+
+                  if(contact.Personas && contact.Personas.records && contact.Personas.records.length > 0)
+                    $(".profile-photo").attr("src", contact.Personas.records[0].ExternalPictureURL);
+                  else{
+                    $(".profile-photo").hide();
+                    $(".empty-profile-icon").show();
+                  }
+
+
+               }
+               if(snapshot.val().contact.Referral_Credit__c)
+               $("a.referral-link").html('$' + snapshot.val().contact.Referral_Credit__c + ' Account Credit');
+               else
+               $("a.referral-link").html('$0 Account Credit');
+
+             }
+           });
+         }
+         data.loadMenu();
+       },
+       loadMenu : function(){
+         firebase.database().ref("menu").once("value", function(snapshot){
+           snapshot.forEach(function(child){
+             var link = child.val();
+             var element = $("a[data-href*='" + link.handle + "']");
+             element.next(".collapsible-body").remove();
+             element.after(Handlebars.compile($("#menu-template").html())(link));
+              $(".collapsible").collapsible({accordion: true});
+           })
+         })
+       }
+     }
+
+     $(document).ready(function(){
+     	firebase.auth().onAuthStateChanged(data.init);
+      dorrbell.navigation.init();
+     });
+   })();
+ });
+</script>

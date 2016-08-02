@@ -1,0 +1,190 @@
+
+<!-- Modal Structure -->
+{% raw %}
+<script type="text/x-handlebars-template" id="referral-modal-template">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card dorrbell-blue darken-1">
+          <div class="card-content white-text">
+            <span class="card-title m-b">Your Code: <span class="text-primary">{{this.contact.Referral_Code__c}}</span></span>
+            <div class="row">
+                {{#each_upto this.referrals 5}}
+                	<div class="col s6 m2 push-m1">
+                    	{{#if this.otherContact.Personas.records.0.ExternalPictureURL}}
+                            <img class="circle" src="{{this.otherContact.Personas.records.0.ExternalPictureURL}}"></img>
+                        {{else}}
+                          <div class="circle full-circle">
+                            <div class="content">
+                              	<span>{{Initials this.otherContact.FirstName this.otherContact.LastName}}</span>
+                            </div>
+                          </div>
+                        {{/if}}
+                    </div>
+                {{/each_upto}}
+                {{#for this.referrals.length 5 1}}
+                	<div class="col s6 m2 push-m1">
+                      <div class="circle empty-circle">
+                      	<div class="content">
+                        	<span>{{this}}</span>
+  						          </div>
+                      </div>
+                    </div>
+                {{/for}}
+            </div>
+          </div>
+          <div class="card-action">
+            <span class="text-primary">You've earned ${{this.contact.Referral_Credit__c}} </span><span class="text-white">with our referral program. This credit will automatically be applied to future orders up to $10.00 per order.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form id="referral-code-form">
+    	<div class="row">
+          <div class="col s12 m12">
+            <div class="card dorrbell-blue darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">Redeem a friend's code</span>
+                <div class="row">
+                  <div class="input-field col s8 m7 offset-m1">
+                    <input id="referral-code" type="text" autocomplete="off">
+                    <label for="referral-code" data-error="Invalid Referral Code" data-success="Approved">Referral Code</label>
+                  </div>
+                  <div class="input-field col s4 m3">
+                    <button class="waves-effect waves-light btn-large" type="button" id="btn-redeem">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+     </form>
+    {{#if this.contact.Referral_Url__c}}
+    	<div class="row">
+          <div class="col s12 m12">
+            <div class="card dorrbell-blue darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">Or share this link</span>
+
+                <div class="row">
+                  <div class="input-field col s8 m7 offset-m1">
+                    <input readonly id="referral-url" type="text" class="referral-input" value="{{this.contact.Referral_Url__c}}"/>
+                    <label for="referral-url" data-error="Failed to copy to clipboard" data-success="Copied to clipboard">Referral URL</label>
+                  </div>
+                  <div class="input-field col s4 m3">
+                     <button class="waves-effect waves-light btn-large" type="button" id="referral-copy">Copy Link</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {{/if}}
+  </div>
+</script>
+ {% endraw %}
+
+
+<div class="container" style="margin-top:2rem;">
+  <div class="center-align">
+  	<h3>{{ page.title }}</h3>
+  	<p>{{page.content}}</p>
+  </div>
+  <div id="referral-content">
+
+  </div>
+</div>
+
+<script>
+ $(document).ready(function(){
+   Handlebars.registerHelper('Initials', function(firstName, lastName){
+     if(firstName && lastName)
+     	return firstName.substring(0, 1) + lastName.substring(0, 1);
+     else
+       return '';
+   });
+   Handlebars.registerHelper('each_upto', function(ary, max, options) {
+      if(!ary || ary.length == 0)
+          return options.inverse(this);
+
+      var result = [ ];
+      for(var i = 0; i < max && i < ary.length; ++i)
+          result.push(options.fn(ary[i]));
+      return result.join('');
+  });
+   Handlebars.registerHelper('for', function(from, to, incr, block) {
+      var accum = '';
+      if(!from) from = 0;
+      for(var i = from; i < to; i += incr)
+          accum += block.fn(i + 1);
+      return accum;
+  });
+
+   (function(){
+
+     var referral = {
+
+       init : function(user){
+         if(user){
+         	firebase.database().ref('customers/' + user.uid).on('value', function(snapshot){
+                referral.user = snapshot.val().contact;
+
+                $("#referral-content").html(Handlebars.compile($("#referral-modal-template").html())(snapshot.val()));
+                $("#referral-copy").click(referral.copyLink);
+                $("#btn-redeem").click(referral.redeemCode);
+				$("#referral-code-form").submit(referral.redeemCode);
+                Materialize.updateTextFields();
+            });
+         }
+       },
+
+       copyLink : function(){
+         var copyTextarea = document.querySelector('.referral-input');
+         copyTextarea.select();
+
+         try {
+           var successful = document.execCommand('copy');
+           var msg = successful ? 'successful' : 'unsuccessful';
+           $("#referral-url").addClass("valid");
+           setTimeout(function(){$("#referral-url").removeClass("valid");}, 3000);
+         } catch (err) {
+           $("#referral-url").addClass("invalid");
+           setTimeout(function(){$("#referral-url").removeClass("invalid");}, 3000);
+         }
+       },
+
+       redeemCode : function(e){
+         e.preventDefault();
+         dorrbell.callout(
+           "POST"
+           ,"/api/redeem"
+           ,{
+           		code : $("#referral-code").val(),
+           		Id : referral.user.Id
+         	}
+           ,function(s){
+             $("#referral-code").addClass("valid");
+             setTimeout(function(){$("#referral-code").removeClass("valid");}, 3000);
+           }
+           ,function(e){
+             	$("#referral-code+label").attr("data-error", "Invalid referral code");
+            	try{
+                    var response = JSON.parse(e.responseText);
+                    if(response.errorCode == "DUPLICATE_VALUE")
+                      $("#referral-code+label").attr("data-error", "This code has already been used");
+                }catch(e){}
+
+                $("#referral-code").addClass("invalid");
+                setTimeout(function(){$("#referral-code").removeClass("invalid");}, 3000);
+           }
+         );
+         return false;
+       }
+     }
+
+     $(document).ready(function(){
+     	firebase.auth().onAuthStateChanged(referral.init);
+     });
+   })();
+ });
+</script>
