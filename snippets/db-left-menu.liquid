@@ -939,7 +939,7 @@ tags: {{current_tags}}<br/><br/>
 <!-- Men's T-Shirts -->
 {% elsif handle == "men-clothing" and current_tags contains "t-shirts" or current_tags contains "T-Shirts"%}
 
-	<div class="db-left-menu-sec">Men T-Shirts
+	<div class="db-left-menu-sec">
 		{% for link in linklists.mens-t-shirts-top.links %}
 		<a href="{{ link.url }}">{{ link.title }}</a><br/>
 		{% endfor %}
