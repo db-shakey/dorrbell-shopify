@@ -78,6 +78,9 @@ h1,p.db-text .db-text{font-family:proxima-nova,sans serif}.text.selected{padding
     }
   }
 }
+#tidio-chat{
+  z-index: 500 !important;
+}
 .db-prod-notification a{
   color: $link-color;
 }
@@ -149,9 +152,14 @@ span.badge.new{
       top: 0;
       right: 0;
     }
-    .dropdown-content li a>i{
-      height: initial;
+
+    .title{
+      margin-top: 1.5rem;
     }
+  }
+  li a#logout-link>i{
+    height: inherit;
+    line-height: inherit;
   }
 }
 
