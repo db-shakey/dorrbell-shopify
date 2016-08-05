@@ -46,25 +46,13 @@
 
       <a href="#" data-activates="drawer-menu" class="button-collapse"><i class="material-icons">menu</i></a>
       <div id="drawer-menu" class="side-nav collection with-header">
-        <ul id="account-dropdown" class="dropdown-content">
-          <li><a href="/pages/referrals" class="referral-link"></a></li>
-          <li class="divider"></li>
-          <li>
-            <a href="javascript:void(0);" id="logout-link" onclick="dorrbell.logout();">
-              <i class="material-icons left">exit_to_app</i>
-              Logout
-            </a>
-          </li>
-        </ul>
+
         <ul>
           <li class="collection-item avatar dorrbell-blue darken-1 white-text hide-on-large-only">
             <img src="" class="circle profile-photo"></img>
             <i class="material-icons empty-profile-icon">person</i>
-            <span class="title">
-              <a class="dropdown-button username white-text" href="#!" data-activates="account-dropdown"></a>
-            </span>
+            <span class="title username"> </span>
             <a class="secondary-content white-text" onclick="$('.button-collapse').sideNav('hide');"><i class="material-icons">close</i></a>
-
           </li>
           <li class="container collection-item hide-on-large-only">
             <form action="/search" method="get">
@@ -81,6 +69,14 @@
                 </li>
               {% endfor %}
             </ul>
+          </li>
+          <li class="divider"></li>
+          <li><a href="/pages/referrals"> Give $10, Get $10</a></li>
+          <li>
+            <a href="javascript:void(0);" id="logout-link" onclick="dorrbell.logout();">
+              <i class="material-icons left">exit_to_app</i>
+              Logout
+            </a>
           </li>
         </ul>
       </div>
@@ -110,9 +106,9 @@
                 <p>{{ item.variant.option1 }}&nbsp;/&nbsp;{{ item.variant.option2 }}
                 </p>
                 <span class="secondary-content black-text cart-price">
-                  {%if item.variant.metafields.price.metalistprice != nil and item.variant.metafields.price.metaprice != nil %}
-                    <span>{{item.variant.metafields.price.metaprice|money}}</span><br/>
-                    {{item.variant.metafields.price.metalistprice|money}}
+                  {%if item.variant.metafields.price.metalistprice != nil and item.variant.metafields.price.metaprice != nil and item.variant.metafields.price.metaprice != item.variant.metafields.price.metalistprice %}
+                    <span>{{item.variant.metafields.price.metalistprice|money}}</span><br/>
+                    {{item.variant.metafields.price.metaprice|money}}
                   {% elsif item.variant.metafields.price.metaprice != nil %}
                     {{item.variant.metafields.price.metaprice | money}}
                   {% else %}
