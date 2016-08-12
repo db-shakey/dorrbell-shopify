@@ -18,7 +18,7 @@
           <a href="/pages/referrals">Give $10, Get $10</a>
         </li>
         <li>
-          <a class="dropdown-button" href="#!" data-activates="account-dropdown-full">
+          <a class="dropdown-button" href="javascript:void(0);" data-activates="account-dropdown-full">
             <i class="material-icons left empty-profile-icon">person</i>
             <img src="" class="circle profile-photo"></img>
             <span class="username"></span>
@@ -121,9 +121,9 @@
           </ul>
           <div class="footer-section">
             {% if cart.item_count == 0 %}
-              <a disabled class="btn disabled">Checkout</a>
+              <a disabled class="btn disabled" data-position="top">Schedule Delivery</a>
             {% else %}
-              <a href="/cart" class="btn">Checkout</a>
+              <a href="/cart" class="btn" data-position="top">Schedule Delivery</a>
             {% endif %}
           </div>
        </div>

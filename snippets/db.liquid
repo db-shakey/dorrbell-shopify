@@ -2,7 +2,6 @@
 
 <script>
  $(document).ready(function(){
-
    dorrbell.navigation = {
      init : function(){
        // Initialize collapse button
@@ -32,22 +31,24 @@
                  var contact = snapshot.val().contact;
                  $(".username").html(snapshot.val().contact.Name);
 
-                  if(contact.Personas && contact.Personas.records && contact.Personas.records.length > 0)
+                  if(contact.Personas && contact.Personas.records && contact.Personas.records.length > 0){
                     $(".profile-photo").attr("src", contact.Personas.records[0].ExternalPictureURL);
+                    $(".profile-photo").show();
+                  }
                   else{
                     $(".profile-photo").hide();
                     $(".empty-profile-icon").show();
                   }
-
-
                }
                if(snapshot.val().contact.Referral_Credit__c)
                $(".referral-link").html('$' + snapshot.val().contact.Referral_Credit__c + ' Account Credit');
                else
                $(".referral-link").html('$0 Account Credit');
-
              }
            });
+         }else{
+           $(".profile-photo, .empty-profile-icon").hide();
+           $(".username").html('');
          }
          data.loadMenu();
        },

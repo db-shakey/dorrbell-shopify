@@ -266,7 +266,7 @@ $(function($){
   var shopifyAjaxStorePageURL = '/search';
 
   function updateCartSummaries() {
-    $.get(shopifyAjaxStorePageURL, function(data){
+    $.get(shopifyAjaxStorePageURL, function(data, status){
       var selectors = ['.cart-qty', '#drawer-cart'];
       var $parsed = $($.parseHTML('<div>' + data + '</div>'));
       for(var i=0; i<selectors.length; i++) {
@@ -280,15 +280,13 @@ $(function($){
       //Show cart dropdown, if on a product page
       $('body.template-product').addClass('show-cart-summary');
       {% endif %}
+
+       Materialize.toast('This item has been added to your fitting room!', 3000, 'dorrbell-blue')
     });
   }
 
   {% if settings.prod_ajax == 'ajax' %}
   $(document).on('submit', 'form[action="/cart/add"]:not(.noAJAX)', function(e) {
-    //Skip on mobile
-    if($(window).width() < 768) {
-      return true;
-    }
     var $form = $(this);
     //Disable add button
     $form.find(':submit').attr('disabled', 'disabled').each(function(){
@@ -313,6 +311,7 @@ $(function($){
       updateCartSummaries();
 
     }, 'text').error(function(data) {
+      Materialize.toast('Unable to add the item.', 4000, 'red darken-1');
       //Enable add button
       var $firstBtn = $form.find(':submit').removeAttr('disabled').each(function(){
         var $btn = $(this);
