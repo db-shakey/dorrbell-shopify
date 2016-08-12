@@ -1,0 +1,441 @@
+<!-- Modal Structure -->
+<div id="login-modal" class="modal">
+  <div class="progress">
+      <div class="indeterminate"></div>
+  </div>
+  <div class="modal-content">
+    <div class="row p-w-xs">
+      <div class="col l7 hide-on-med-and-down">
+        <img src="{{ 'login-splash.png' | asset_url }}" class="responsive-img"/>
+      </div>
+      <div class="col l5 s12" id="login-modal-form">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% raw %}
+  <script type="text/x-handlebars-template" id="login-step1">
+    <form id="zip-form">
+      <div class="right-align m-b-md">
+        <small><span>Already have an account? </span><a href="javascript:void(0)" class="btn-login">Log In</a></small>
+      </div>
+      <div>
+        <h2>Clothes from local stores delivered to your door today</h2>
+        <p>No minimums. Try-on risk free. We take care of the returns for you.</p>
+      </div>
+      {{#if this.referral}}
+        <div class="card horizontal row m-t-md">
+          {{#if this.referral.1.records.0.Personas.records.0.ExternalPictureURL}}
+            <div class="card-image col l3 hide-on-med-and-down">
+              <img src="{{this.referral.1.records.0.Personas.records.0.ExternalPictureURL}}">
+            </div>
+            <div class="card-stacked col l8 s12">
+              <div class="card-content">
+                <h2 class="center-align">{{this.referral.1.records.0.FirstName}} Gave You {{currency this.referral.0.records.0.UnitPrice}}</h2>
+                <p class="center-align">off your first order!</p>
+              </div>
+            </div>
+          {{else}}
+            <div class="card-stacked col s12">
+              <div class="card-content">
+                <h2 class="center-align">{{this.referral.1.records.0.FirstName}} Gave You {{currency this.referral.0.records.0.UnitPrice}}</h2>
+                <p class="center-align">off your first order!</p>
+              </div>
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
+      <div class="m-t-lg center-align">
+        <a class="waves-effect waves-light btn btn-large fb-color block fb-signup"><i class="fa fa-facebook left" aria-hidden="true"></i>Sign Up With Facebook</a>
+
+        <div class="text-center strike m-t-md m-b-md msg-or"><span>Or</span></div>
+        <div class="input-field">
+          <input placeholder="Enter Your Zip Code" id="postalCode" type="number" name="postalCode">
+        </div>
+        <button class="waves-effect waves-light btn block btn-join btn-large m-t-md" type="submit">Sign Up For Free</button>
+      </div>
+    </form>
+  </script>
+
+  <script type="text/x-handlebars-template" id="login-step2">
+    <div class="left-align">
+      <h2>
+        <a href="javascript:void(0)" class="back">
+          <i class="material-icons">arrow_back</i>
+        </a>
+      </h2>
+    </div>
+    <div>
+      {{#if this.location}}
+        <h2 class="center-align">We're available in {{this.location.City__c}}!</h2>
+      {{else}}
+        <h2 class="center-align">We aren't in {{this.user.postalCode}} yet.</h2>
+        <p>Sign up and we'll let you know when we get there!</p>
+      {{/if}}
+    </div>
+    <form id="email-form">
+      <div class="m-t-lg center-align">
+        <div class="input-field">
+          <input placeholder="First Name" id="firstName" name="firstName" type="text" value="{{this.user.firstName}}">
+        </div>
+        <div class="input-field">
+          <input placeholder="Last Name" id="lastName" name="lastName" type="text" value="{{this.user.lastName}}">
+        </div>
+        <div class="input-field">
+          <input placeholder="Email" id="email" name="email" type="email" value="{{this.user.email}}">
+        </div>
+        <div class="input-field">
+          <input placeholder="Password" id="password" name="password" type="password">
+        </div>
+        <button class="waves-effect waves-light btn btn-large block btn-register m-t-sm" type="submit">Get Started</a>
+      </div>
+    </form>
+  </script>
+
+  <script type="text/x-handlebars-template" id="login-step3">
+    <div class="left-align">
+      <h2>
+        <a href="javascript:void(0)" class="back">
+          <i class="material-icons">arrow_back</i>
+        </a>
+      </h2>
+    </div>
+    <div>
+      <h2 class="center-align">Log In</h2>
+    </div>
+    <form id="login-form">
+      <div class="m-t-lg center-align">
+        <a class="waves-effect waves-light btn btn-large fb-color block fb-login"><i class="fa fa-facebook left" aria-hidden="true"></i>Log In With Facebook</a>
+        <div class="text-center strike m-t-md m-b-md"><span>Or</span></div>
+        <div class="input-field">
+          <input placeholder="Email" id="l_email" type="email" name="l_email">
+        </div>
+        <div class="input-field">
+          <input placeholder="Password" id="l_password" name="l_password" type="password">
+        </div>
+        <button class="waves-effect waves-light btn btn-large block m-t-sm" type="submit">Log In</button>
+        <div class="right-align m-t-md">
+          <small><span>Forgot your password? </span><a href="javascript:void(0)" class="link-reset">Reset It</a></small>
+        </div>
+      </div>
+    </form>
+  </script>
+
+  <script type="text/x-handlebars-template" id="login-step5">
+    <div class="left-align">
+      <h2>
+        <a href="javascript:void(0)" class="back-login">
+          <i class="material-icons">arrow_back</i>
+        </a>
+      </h2>
+    </div>
+    <div>
+      <h2 class="center-align">Reset Your Password</h2>
+      <p>We'll send you a link to reset your password</p>
+    </div>
+    <form id="reset-form">
+      <div class="m-t-lg center-align">
+        <div class="success-box p-xs left-align" style="display:none;">You will receive an email with instructions about how to reset your password in a few minutes. Please check your email.</div>
+        <div class="input-field">
+          <input placeholder="Email" id="r_email" type="email" name="r_email">
+        </div>
+        <button class="waves-effect waves-light btn btn-large block m-t-sm btn-reset" type="submit">Reset Password</button>
+      </div>
+    </form>
+  </script>
+
+  <script type="text/x-handlebars-template" id="login-step4">
+    <div>
+      <h2 class="left-align">We aren't in {{this.user.postalCode}} yet.</h2>
+      <p>However, you may continue to browse our store and we'll let you know when our service is available in your area.</p>
+    </div>
+    <div class="m-t-xl center-align">
+      <a class="waves-effect waves-light btn btn-large block btn-start">Continue</a>
+    </div>
+  </script>
+{% endraw %}
+
+<script>
+  $.fn.serializeObject = function()
+  {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+  };
+
+  Handlebars.registerHelper('currency', function(amount, options) {
+    if (typeof(amount) === 'string') { amount = options.contexts[0].get(amount); }
+    amount = -1 * amount;
+    var rounded = Math.round(amount * 100);
+    var dec = rounded % 100;
+    var whole = rounded / 100 - dec / 100;
+    var decStr = '' + dec;
+    return '$' + whole + '.' + decStr + ( decStr.length < 2 ? '0' : '');
+  });
+
+  function getQueryParams(name) {
+    var url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  var login_modal = {
+    user : {leadSource : getQueryParams('lpsource')},
+    model : {},
+    init : function(){
+      firebase.auth().getRedirectResult().then(function(r){
+        if(login_modal.signOut){
+          login_modal.signOut = false;
+          login_modal.openModal();
+        }else
+          login_modal.afterRedirect(r);
+      }).catch(this.openModal);
+    },
+    openModal : function(){
+      $("#login-modal").openModal({
+        dismissible: false, // Modal can be dismissed by clicking outside of the modal
+        ready: function() {
+          if(getQueryParams('action') == 'login')
+            login_modal.goToStep(3);
+          else
+            login_modal.goToStep(1);
+        }
+      });
+    },
+    doBind : function(){
+      for(var i in this.events){
+        if($("#login-modal " + i)){
+          $("#login-modal " + i).bind(this.events[i].event, this.events[i].args, $.proxy(this[this.events[i].handler], this));
+        }
+      }
+    },
+    goToStep : function(args){
+      var step = (args.data) ? args.data.step : args;
+      return login_modal.prerender(step).then($.proxy(function(){
+        $("#login-modal-form").html(Handlebars.compile($("#login-step" + step).html())(this.model));
+        this.doneLoading();
+        this.initValidation(step);
+      }, this));
+    },
+    initValidation : function(step){
+      if(step == 1){
+        $("#zip-form").validate({
+          rules : {
+            postalCode : {required : true, minlength : 5, maxlength : 5}
+          },
+          messages : {
+            postalCode : "A valid postal code is required"
+          },
+          submitHandler : function(){
+            login_modal.user = $.extend(login_modal.user, $("#zip-form").serializeObject());
+            if(login_modal.user.email && login_modal.user.postalCode && login_modal.user.firstName && login_modal.user.lastName)
+              login_modal.salesforceRegister();
+            else
+              login_modal.goToStep(2);
+          }
+        });
+      }else if(step == 2){
+        $("#email-form").validate({
+          rules : {
+            firstName : {required : true, minlength : 2},
+            lastName : {required : true, minlength : 2},
+            email : {required : true, minlength : 4, email : true},
+            password : {required : true, minlength : 6}
+          },
+          submitHandler : function(){
+            login_modal.loading();
+            login_modal.user = $.extend(login_modal.user, $("#email-form").serializeObject());
+            firebase.auth().createUserWithEmailAndPassword(login_modal.user.email, login_modal.user.password).then(function(r){
+              $.extend(login_modal.user, {
+                uid : r.uid,
+                provider : r.providerData[0].providerId
+              });
+              login_modal.salesforceRegister();
+            }).catch(function(e){
+              login_modal.doneLoading();
+              Raven.captureException(e);
+              Materialize.toast(e.message, 4000, 'red darken-1');
+            })
+          }
+        })
+      }else if(step == 3){
+        $("#login-form").validate({
+          rules : {
+            l_email : {required : true, minlength : 4, email : true},
+            l_password : {required : true, minlength : 6}
+          },
+          submitHandler : function(){
+            login_modal.loading();
+            var lForm = $("#login-form").serializeObject();
+            firebase.auth().signInWithEmailAndPassword(lForm.l_email, lForm.l_password).then(login_modal.finalize).catch(function(e){
+              Raven.captureException(e);
+              Materialize.toast('Unable to login. Please verify your username / password', 4000, 'red darken-1');
+              login_modal.doneLoading();
+            })
+          }
+        })
+      }else if(step == 5){
+        $("#reset-form").validate({
+          rules : {
+            r_email : {required : true, minlength : 4, email : true}
+          },
+          submitHandler : function(){
+            firebase.auth().sendPasswordResetEmail($("#reset-form").serializeObject().r_email).then(function(){
+              $("#reset-form button[type='submit']").addClass('disabled');
+              $("#reset-form button[type='submit']").attr("formnovalidate='formnovalidate'");
+              $("#reset-form .success-box").show();
+            }, function(e){
+              Raven.captureException(e);
+              Materialize.toast("We did not find a customer with the email you provided.", 4000, 'red darken-1');
+            });
+          }
+        })
+      }
+    },
+    prerender : function(step){
+      var that = this;
+      this.model.user = this.user;
+      if(step == 1 && getParameterByName('ref')){
+        return new Promise(function(resolve, reject){
+          dorrbell.callout(
+            "GET"
+            ,"/api/code/" + getParameterByName('ref')
+            ,null
+            ,function(res){
+              if(res.length == 2 && res[1].records.length > 0){
+                $.extend(that.user, {referralFrom : res[1].records[0].Id});
+                that.model.referral = res;
+                resolve(res);
+              }else
+                resolve();
+            },reject);
+        });
+      }
+      if(step == 2){
+        return firebase.database().ref('/locations/' + this.user.postalCode).once('value').then(function(snapshot){
+          that.model.location = snapshot.val();
+        });
+      }else{
+        return $.when(null);
+      }
+    },
+    loading : function(){
+      $("#login-modal button, #login-modal a").addClass("disabled");
+      $("#login-modal button, #login-modal a").unbind();
+      $(".progress").show();
+    },
+    doneLoading : function(){
+      $(".progress").hide();
+      $("#login-modal button, #login-modal a").removeClass("disabled");
+      login_modal.doBind();
+    },
+    signUpFacebook : function(){
+      login_modal.loading();
+      firebase.auth().signInWithRedirect(new firebase.auth.FacebookAuthProvider());
+    },
+    afterRedirect : function(result){
+      firebase.database().ref('/customers/' + result.user.uid).once("value").then(function(snapshot){
+        if(snapshot.val())
+          login_modal.finalize();
+        else
+          login_modal.registerFacebook(result);
+      });
+    },
+    registerFacebook : function(result){
+      $.extend(this.user, {
+        photoUrl : result.user.photoURL,
+          networkId : result.user.providerData[0].uid,
+          uid : result.user.uid,
+          email : result.user.email,
+          displayName : result.user.displayName
+      });
+      this.getPostalCode(result.credential.accessToken).then(function(postalCode){
+        login_modal.user.postalCode = postalCode;
+        login_modal.salesforceRegister();
+      }, $.proxy(login_modal.noZipCode, login_modal));
+    },
+    noZipCode : function(){
+      $("#login-modal").openModal({
+        dismissible: false, // Modal can be dismissed by clicking outside of the modal
+        ready: function() {
+          login_modal.goToStep(1).then(function(){
+            $(".msg-or").replaceWith('<div class="red lighten-3 error-box left-align m-t-sm m-b-sm p-xs">Unable to retrieve your postal code. Please enter one to finish registration.</div>');
+          });
+        }
+      });
+    },
+    salesforceRegister : function(){
+      login_modal.loading();
+      dorrbell.callout(
+        "POST"
+        ,"/api/register"
+        , login_modal.user
+        ,function(res, status, data){
+          if(data.status !== 201){
+            login_modal.goToStep(4);
+          }else
+            login_modal.finalize();
+        },function(err){
+          Raven.captureException(e);
+          Materialize.toast('Unable to authenticate with Facebook.', 4000, 'red darken-1');
+          login_modal.doneLoading();
+        });
+    },
+    getPostalCode : function(accessToken){
+      return new Promise(function(resolve, reject){
+        $.get("https://graph.facebook.com/v2.6/me?access_token=" + accessToken + "&fields=gender,location{location},first_name,last_name,birthday", resolve);
+      }).then(function(data){
+        $.extend(login_modal.user, {
+          firstName : data.first_name,
+          lastName : data.last_name,
+          gender : data.gender,
+          provider : "Facebook"
+        });
+        return new Promise(function(resolve, reject){
+          var geocoder = new google.maps.Geocoder;
+          var latlng = {lat: data.location.location.latitude, lng: data.location.location.longitude};
+          geocoder.geocode({'location': latlng}, function(results, status) {
+            if (status === 'OK' && results.length > 0) {
+              var address = results[0];
+              var component = $.grep(address.address_components, function(v){return v.types[0] == 'postal_code'});
+              if(component && component.length > 0){
+                resolve(component[0].short_name);
+                //reject();
+              }else
+                reject();
+            }else
+              reject();
+          });
+        });
+      });
+    },
+    finalize : function(){
+      login_modal.doneLoading();
+      $("#login-modal").closeModal();
+    },
+    events : {
+      "a.btn-login" : {event : "click", handler : 'goToStep', args : {step : 3}},
+      "a.back" : {event : "click", handler : "goToStep", args : {step : 1}},
+      "a.fb-signup, a.fb-login" : {event : "click", handler : "signUpFacebook", args : {}},
+      "a.btn-start" : {event : "click", handler : "finalize", args : {}},
+      "a.link-reset" : {event : "click", handler : "goToStep", args : {step : 5}},
+      "a.back-login" : {event : "click", handler : "goToStep", args : {step : 3}}
+    }
+  }
+</script>
