@@ -116,12 +116,15 @@
    var timeSelector = {
      inputFormat : "ddd mmm d yyyy",
      format : "ddd MMM D YYYY [between] hh:mm A [and] ",
-     hours : [12, 13, 14, 15, 16, 17],
+     hours : [12, 13, 14, 15],
      init : function(){
        var $input = $('.datepicker').pickadate({
           closeOnSelect : true,
           min : new Date(),
-          max : new Date().addDays(7),
+          max : new Date().addDays(10),
+          disable : [
+            1
+          ],
           container : "body",
           onSet : timeSelector.onDateSelect,
           onClose : timeSelector.onClose,

@@ -93,6 +93,14 @@
               <a class="secondary-content white-text" onclick="$('.btn-cart').sideNav('hide');"><i class="material-icons">close</i></a>
             </h5>
 
+            <h5 class="footer-section">
+              {% if cart.item_count == 0 %}
+                <a disabled class="btn disabled" data-position="top">Schedule Delivery</a>
+              {% else %}
+                <a href="/cart" class="btn" data-position="top">Schedule Delivery</a>
+              {% endif %}
+            </h5>
+
           </li>
           {% if cart.item_count == 0 %}
             <li class="collection-item">
@@ -119,13 +127,7 @@
             {% endfor %}
           {% endif %}
           </ul>
-          <div class="footer-section">
-            {% if cart.item_count == 0 %}
-              <a disabled class="btn disabled" data-position="top">Schedule Delivery</a>
-            {% else %}
-              <a href="/cart" class="btn" data-position="top">Schedule Delivery</a>
-            {% endif %}
-          </div>
+
        </div>
 
     </div>

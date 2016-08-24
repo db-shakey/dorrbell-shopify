@@ -28,19 +28,19 @@
       {{#if this.referral}}
         <div class="card horizontal row m-t-md">
           {{#if this.referral.1.records.0.Personas.records.0.ExternalPictureURL}}
-            <div class="card-image col l3 hide-on-med-and-down">
+            <div class="card-image col l4 hide-on-med-and-down">
               <img src="{{this.referral.1.records.0.Personas.records.0.ExternalPictureURL}}">
             </div>
             <div class="card-stacked col l8 s12">
-              <div class="card-content">
-                <h2 class="center-align">{{this.referral.1.records.0.FirstName}} Gave You {{currency this.referral.0.records.0.UnitPrice}}</h2>
+              <div class="card-content m-l-n-md">
+                <h3 class="center-align">{{this.referral.1.records.0.FirstName}} Gave You {{currency this.referral.0.records.0.UnitPrice}}</h3>
                 <p class="center-align">off your first order!</p>
               </div>
             </div>
           {{else}}
             <div class="card-stacked col s12">
               <div class="card-content">
-                <h2 class="center-align">{{this.referral.1.records.0.FirstName}} Gave You {{currency this.referral.0.records.0.UnitPrice}}</h2>
+                <h3 class="center-align">{{this.referral.1.records.0.FirstName}} Gave You {{currency this.referral.0.records.0.UnitPrice}}</h3>
                 <p class="center-align">off your first order!</p>
               </div>
             </div>
@@ -392,8 +392,8 @@
           }else
             login_modal.finalize();
         },function(err){
-          Raven.captureException(e);
-          Materialize.toast('Unable to authenticate with Facebook.', 4000, 'red darken-1');
+          Raven.captureException(err);
+          Materialize.toast('There was a problem registering your account. Please try again.', 4000, 'red darken-1');
           login_modal.doneLoading();
         });
     },
